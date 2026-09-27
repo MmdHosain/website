@@ -46,6 +46,14 @@ const config: Config = {
         'spin-slow': {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' }
+        },
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' }
+        },
+        'fade-in-scale': {
+          '0%': { opacity: '0', transform: 'scale(0.9)' },
+          '100%': { opacity: '1', transform: 'scale(1)' }
         }
       },
       animation: {
@@ -54,6 +62,8 @@ const config: Config = {
         'float-reverse': 'float-reverse 7s ease-in-out infinite',
         'cinematic-enter': 'cinematic-enter 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
         'spin-slow': 'spin-slow 20s linear infinite',
+        'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in-scale': 'fade-in-scale 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       }
     },
   },

@@ -17,17 +17,15 @@
     "heroSubheadline": "Clarity in authenticity, transparent pricing, and borderless access",
     "ctaPrimary": "VIEW COLLECTIONS",
     "ctaSecondary": "THE ARIWATCH STORY",
-    "viewHighCopy": "VIEW HIGH COPY WATCHES",
+    "viewHighCopy": "VIEW HIGH COPY",
     "shopByBrand": "SHOP BY BRAND",
     "brandSubtitle": "ORIGINAL BRANDS / HIGH COPY BRANDS",
     "originalWatches": "ORIGINAL WATCHES",
     "originalDesc": "Original watches are listed only when product type, condition, price and supporting details are confirmed.",
-    "viewOriginal": "VIEW ORIGINAL WATCHES",
+    "viewOriginal": "VIEW ORIGINAL",
     "nonOriginalTitle": "NON-ORIGINAL PRODUCTS, CLEARLY LABELLED",
     "nonOriginalSubtitle": "HIGH COPY / NON-ORIGINAL WATCHES",
     "nonOriginalDesc": "Products in this section are not original. Model type, movement information, price and availability are confirmed before ordering.",
-    "storySubtitle": "THE ARIWATCH STORY",
-    "storyTitle": "PRECISION, IMAGE & TRUST",
     "clearlyCategorised": "WATCHES — CLEARLY CATEGORISED",
     "categorisedDesc": "Original, high-copy and custom-order watches are presented as separate product types. Availability and final specifications are confirmed before purchase.",
     "viewWatches": "VIEW WATCHES",
@@ -46,6 +44,38 @@
     "pathCustomTitle": "CUSTOM ORDER",
     "pathCustomDesc": "Type, price, availability and delivery time are confirmed first.",
     "requestModel": "REQUEST A MODEL"
+  },
+  "editorial": {
+    "subtitle": "THE ARIWATCH STORY",
+    "title": "PRECISION, IMAGE & TRUST",
+    "discover": "Discover the watches",
+    "slides": [
+      {
+        "brand": "CARTIER",
+        "title": "TIMELESS FORMS",
+        "desc": "A curated view of Cartier forms, straps and finishes, presented with a clean editorial rhythm."
+      },
+      {
+        "brand": "ROLEX",
+        "title": "STEEL, GOLD AND COLOUR",
+        "desc": "A focused look at steel, gold, black and blue combinations, paired with layered product imagery."
+      },
+      {
+        "brand": "OMEGA",
+        "title": "SPEEDMASTER & SEAMASTER",
+        "desc": "Dial, case and strap details are brought forward in a tighter and more refined composition."
+      },
+      {
+        "brand": "PATEK PHILIPPE",
+        "title": "RUBBER STRAPS, DISTINCT COLOURS",
+        "desc": "Black, blue and green variations create a clean comparison of tone, proportion and finish."
+      },
+      {
+        "brand": "OMEGA SWATCH",
+        "title": "A BRIGHTER TAKE ON TIME",
+        "desc": "A vivid selection of white, red, black and gold for a more expressive visual story."
+      }
+    ]
   },
   "footer": {
     "subscribe": "SUBSCRIBE TO OUR NEWSLETTER",
