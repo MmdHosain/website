@@ -24,16 +24,14 @@ Each step will be reviewed, tested, and approved before moving to the next. Only
   - Implement the chosen color palette, typography, dotted background pattern utility, and base layout in `globals.css` and `tailwind.config.ts`.
   - Update `layout.tsx` to match the two-tier header structure.
 
-- [x] **Step 8: Implement Home Page (Current Focus)**
-  - Build the Editorial Slider (dotted background, lookbook overlapping images, strict slider controls).
-  - Build Categorised blocks with ultra-light typography.
-  - Build the Three Paths card grid (Red/White badges, dark bottom gradients).
-  - *Code Review & Test*
+- [x] **Step 8: Implement Home Page (Completed)**
+  - Build the Hero, Categorised blocks, Marquee, and Editorial components with full i18n and RTL/LTR support.
 
-- [ ] **Step 9: Implement PLP & PDP**
-  - Build the product listing and detail pages with responsive design in mind.
-  - *Code Review & Test*
+- [x] **Step 9: Implement PLP (Current Focus - Implemented Phase 1 in NEXT_PAGES_PLAN.md)**
+  - Build the product listing page with responsive design, dynamic grid, and filters.
 
-- [ ] **Step 10: Final Polish & Optimization**
+- [ ] **Step 10: Implement PDP & Support Pages**
+  - Build product detail page, cart logic, and concierge forms.
+
+- [ ] **Step 11: Final Polish & Optimization**
   - Accessibility checks, mobile responsiveness refinement, and performance optimization (image loading).
-  - *Final Review*

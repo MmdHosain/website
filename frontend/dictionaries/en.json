@@ -161,6 +161,59 @@
     "card4Desc": "A look at the Cartier selection and new product videos."
   },
   "concierge": {
+    "title": "BESPOKE CONCIERGE",
+    "subtitle": "Looking for a model not listed in our collection? Our specialists are at your disposal to source exactly what you need.",
+    "formName": "Full Name",
+    "formEmail": "Email Address",
+    "formModel": "Watch Brand & Reference Model",
+    "formMessage": "Additional Details / Requirements",
+    "submit": "SUBMIT REQUEST",
     "fabText": "Speak to a Specialist"
+  },
+  "plp": {
+    "title": "THE COLLECTION",
+    "subtitle": "Explore our curated selection of luxury timepieces, categorised transparently for your trust and convenience.",
+    "filters": {
+      "all": "ALL WATCHES",
+      "original": "ORIGINAL",
+      "highCopy": "HIGH COPY",
+      "custom": "CUSTOM ORDER"
+    },
+    "sort": "SORT BY",
+    "loadMore": "LOAD MORE",
+    "viewDetails": "VIEW DETAILS"
+  },
+  "pdp": {
+    "notFound": "Watch not found.",
+    "addToCart": "ADD TO CART",
+    "requestModel": "REQUEST THIS MODEL",
+    "availability": "AVAILABILITY",
+    "inStock": "In Stock",
+    "delivery": "DELIVERY",
+    "shippingTime": "3-5 Business Days",
+    "specifications": "SPECIFICATIONS",
+    "movement": "MOVEMENT",
+    "case": "CASE",
+    "strap": "STRAP",
+    "relatedProducts": "RELATED WATCHES",
+    "descriptionMock": "This luxury timepiece guarantees precision and represents the pinnacle of watchmaking craftsmanship. Sourced with strict quality controls."
+  },
+  "story": {
+    "title": "THE WORLD OF ARIWATCH",
+    "subtitle": "OUR VISION, HISTORY AND CRAFT",
+    "p1": "At Ariwatch, we believe that a luxury timepiece is more than just a tool to tell time; it is a reflection of identity, a masterpiece of micro-engineering, and a legacy meant to be passed down through generations. Since our inception under the Arash Ariya Rad Company, our goal has been to provide unparalleled access to the world's most coveted watches.",
+    "p2": "We stand on the pillars of transparency, trust, and refined aesthetics. Whether it is an original classic or a bespoke sourced model, our commitment remains the same: delivering excellence without compromise."
+  },
+  "admin": {
+    "dashboard": "Admin Dashboard",
+    "products": "Products",
+    "addNew": "Add New",
+    "edit": "Edit",
+    "delete": "Delete",
+    "name": "Name",
+    "price": "Price",
+    "category": "Category",
+    "save": "Save Changes",
+    "actions": "Actions"
   }
 }
