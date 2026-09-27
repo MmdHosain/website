@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  Local font fallbacks in case Google Fonts fails to load or is blocked.
+  You can place your font files in the /public/fonts/ directory.
+*/
+@font-face {
+  font-family: 'VazirmatnLocal';
+  src: url('/fonts/Vazirmatn-Regular.woff2') format('woff2'),
+       url('/fonts/Vazirmatn-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'InterLocal';
+  src: url('/fonts/Inter-Regular.woff2') format('woff2'),
+       url('/fonts/Inter-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer utilities {
+  .bg-dotted {
+    background-image: radial-gradient(#d6d3d1 1.5px, transparent 1.5px);
+    background-size: 12px 12px;
+    background-color: #fcfbf9;
+  }
+}

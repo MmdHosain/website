@@ -1,0 +1,47 @@
+services:
+  db:
+    container_name: ariwatch-db
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: luxe_user
+      POSTGRES_PASSWORD: luxe_password
+      POSTGRES_DB: luxe_watches
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/src/infrastructure/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    container_name: ariwatch-backend
+    build:
+      context: ./backend
+    command: npm run dev
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_URL: postgres://luxe_user:luxe_password@db:5432/luxe_watches
+    depends_on:
+      - db
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    container_name: ariwatch-frontend
+    build:
+      context: ./frontend
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://backend:4000
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+
+volumes:
+  postgres_data:
