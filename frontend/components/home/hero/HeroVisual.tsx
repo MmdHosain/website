@@ -37,12 +37,12 @@ export function HeroVisual({ activeSlide, isFa }: HeroVisualProps) {
         </div>
 
         {/* 3D Neumorphic Abstract Watch Placeholder */}
-        <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-80 md:h-80 rounded-full bg-ariwatch-luxury shadow-[10px_10px_30px_#cfceca,-10px_-10px_30px_#ffffff] md:shadow-[20px_20px_60px_#cfceca,-20px_-20px_60px_#ffffff] border border-white/40 flex items-center justify-center transition-transform duration-1000 ease-out group-hover:scale-105 group-hover:[transform:rotateX(5deg)_rotateY(-5deg)] z-20">
+        <div className="relative w-36 h-36 sm:w-56 sm:h-56 md:w-80 md:h-80 rounded-full bg-ariwatch-luxury shadow-[10px_10px_30px_#cfceca,-10px_-10px_30px_#ffffff] md:shadow-[20px_20px_60px_#cfceca,-20px_-20px_60px_#ffffff] border border-white/40 flex items-center justify-center transition-transform duration-1000 ease-out group-hover:scale-105 group-hover:[transform:rotateX(5deg)_rotateY(-5deg)] z-20">
            {/* Inner Dial (Debossed) */}
-           <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-72 md:h-72 rounded-full bg-ariwatch-luxury shadow-[inset_5px_5px_15px_#cfceca,inset_-5px_-5px_15px_#ffffff] md:shadow-[inset_10px_10px_30px_#cfceca,inset_-10px_-10px_30px_#ffffff] flex items-center justify-center relative">
+           <div className="w-28 h-28 sm:w-48 sm:h-48 md:w-72 md:h-72 rounded-full bg-ariwatch-luxury shadow-[inset_5px_5px_15px_#cfceca,inset_-5px_-5px_15px_#ffffff] md:shadow-[inset_10px_10px_30px_#cfceca,inset_-10px_-10px_30px_#ffffff] flex items-center justify-center relative">
               {/* Abstract Watch Hands */}
-              <div className="absolute w-[2px] h-16 sm:h-20 md:h-28 bg-[#121212] rounded-full origin-bottom top-4 sm:top-4 md:top-8 transform rotate-45 shadow-sm"></div>
-              <div className="absolute w-[3px] h-10 sm:h-12 md:h-20 bg-[#666666] rounded-full origin-bottom top-10 sm:top-12 md:top-16 transform -rotate-12 shadow-sm"></div>
+              <div className="absolute w-[2px] h-10 sm:h-20 md:h-28 bg-[#121212] rounded-full origin-bottom top-4 sm:top-4 md:top-8 transform rotate-45 shadow-sm"></div>
+              <div className="absolute w-[3px] h-6 sm:h-12 md:h-20 bg-[#666666] rounded-full origin-bottom top-8 sm:top-12 md:top-16 transform -rotate-12 shadow-sm"></div>
               {/* Center Pin */}
               <div className="w-2 h-2 md:w-3 md:h-3 bg-ariwatch-red rounded-full z-10 shadow-md border-[1px] md:border-2 border-white"></div>
               {/* Minimalist Tick Marks */}

@@ -108,5 +108,59 @@
     "terms": "Terms of Use",
     "privacy": "Privacy Notice",
     "copyright": "© 2026 AriWatch / Arash Ariya Rad Company"
+  },
+  "brandMarquee": [
+    "ROLEX",
+    "CARTIER",
+    "AUDEMARS PIGUET",
+    "PATEK PHILIPPE",
+    "OMEGA",
+    "A. LANGE & SÖHNE"
+  ],
+  "categorySpotlight": {
+    "badge": "CERTIFIED SELECTION",
+    "title": "ORIGINAL WATCHES",
+    "desc": "Original watches are listed only when product type, condition, price and supporting details are confirmed.",
+    "cta": "VIEW ORIGINAL WATCHES"
+  },
+  "highCopyShowcase": {
+    "badge": "HIGH COPY / NON-ORIGINAL WATCHES",
+    "title": "NON-ORIGINAL PRODUCTS, CLEARLY LABELLED",
+    "desc": "Products in this section are not original. Model type, movement information, price and availability are confirmed before ordering.",
+    "cta": "VIEW HIGH COPY WATCHES"
+  },
+  "customOrderBanner": {
+    "badge": "BESPOKE SOURCING",
+    "title": "LOOKING FOR A SPECIFIC MODEL?",
+    "desc": "Model type, price, and delivery timeline are confirmed directly with our specialists.",
+    "cta": "REQUEST A MODEL"
+  },
+  "lookbook": {
+    "title": "WATCHES — CLEARLY CATEGORISED",
+    "subtitle": "Original, high-copy and custom-order watches are presented as separate product types. Availability and final specifications are confirmed before purchase.",
+    "cta": "VIEW WATCHES",
+    "productTitle": "ROLEX STEEL & GOLD",
+    "productDesc": "Wrist model image plus a clean product shot",
+    "details": "Details"
+  },
+  "storyTeaser": {
+    "title": "THE WORLD OF ARIWATCH",
+    "subtitle": "LEADERSHIP / VISION / THE COMPANY",
+    "cta": "DISCOVER THE FULL STORY",
+    "card1Tag": "LEADERSHIP",
+    "card1Title": "ARASH KHANDAN AND THE ARIWATCH JOURNEY",
+    "card1Desc": "Arash Khandan and the development journey behind AriWatch.",
+    "card2Tag": "VISUAL STORY",
+    "card2Title": "MELINA AND THE VISUAL LANGUAGE OF THE PRODUCTS",
+    "card2Desc": "A clean wrist-shot presentation focused on the watch.",
+    "card3Tag": "COMPANY",
+    "card3Title": "ARASH ARIYA RAD COMPANY: THE OPERATING FOUNDATION",
+    "card3Desc": "Arash Ariya Rad Company as the operating foundation behind AriWatch.",
+    "card4Tag": "ARIWATCH",
+    "card4Title": "NEW MODELS AND BEHIND THE SCENES",
+    "card4Desc": "A look at the Cartier selection and new product videos."
+  },
+  "concierge": {
+    "fabText": "Speak to a Specialist"
   }
 }

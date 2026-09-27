@@ -23,7 +23,7 @@ export function HeroSection({ lang, dict, isFa }: HeroSectionProps) {
   }, []);
 
   return (
-    <section className="relative w-full h-[100dvh] flex flex-col md:flex-row bg-ariwatch-luxury overflow-hidden pt-16 md:pt-20">
+    <section className="relative w-full h-[100dvh] flex flex-col md:flex-row bg-ariwatch-luxury overflow-hidden pt-16 pb-4 md:pt-20 md:pb-0">
       <HeroText lang={lang} dict={dict} isFa={isFa} />
       <HeroVisual activeSlide={HERO_SLIDES[currentSlide]} isFa={isFa} />
       <HeroIndicators 

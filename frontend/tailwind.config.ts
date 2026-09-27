@@ -54,6 +54,10 @@ const config: Config = {
         'fade-in-scale': {
           '0%': { opacity: '0', transform: 'scale(0.9)' },
           '100%': { opacity: '1', transform: 'scale(1)' }
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' }
         }
       },
       animation: {
@@ -64,6 +68,7 @@ const config: Config = {
         'spin-slow': 'spin-slow 20s linear infinite',
         'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'fade-in-scale': 'fade-in-scale 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        marquee: 'marquee 25s linear infinite',
       }
     },
   },

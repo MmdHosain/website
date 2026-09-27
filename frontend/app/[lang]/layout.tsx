@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Vazirmatn, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
+import { Inter, Playfair_Display } from "next/font/google";
 import "../globals.css";
 import { getDictionary } from "../dictionaries";
 import { Header } from "../../components/layout/Header";
 import { Footer } from "../../components/layout/Footer";
+import { ConciergeFAB } from "../../components/layout/ConciergeFAB";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -11,8 +13,8 @@ const inter = Inter({
   fallback: ['InterLocal', 'system-ui', 'Arial', 'sans-serif']
 });
 
-const vazir = Vazirmatn({ 
-  subsets: ["arabic", "latin"],
+const vazir = localFont({ 
+  src: '../../public/fonts/Vazirmatn-Regular.woff2',
   variable: '--font-vazir',
   fallback: ['VazirmatnLocal', 'Tahoma', 'system-ui', 'sans-serif']
 });
@@ -46,6 +48,7 @@ export default async function RootLayout({
           {children}
         </main>
         <Footer lang={lang} dict={dict} isFa={isFa} />
+        <ConciergeFAB lang={lang} dict={dict} isFa={isFa} />
       </body>
     </html>
   );
