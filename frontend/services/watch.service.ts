@@ -1,19 +1,10 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
-
-const MOCK_WATCHES = [
-  { id: '1', name: 'Nautilus 5711', description: 'Automatic Movement', price: 125000, imageUrl: 'placeholder', category: 'original' },
-  { id: '2', name: 'Royal Oak', description: 'Self-winding Chronograph', price: 85000, imageUrl: 'placeholder', category: 'highcopy' },
-  { id: '3', name: 'Daytona Cosmograph', description: 'Oyster Perpetual', price: 35000, imageUrl: 'placeholder', category: 'original' },
-  { id: '4', name: 'Santos de Cartier', description: 'Mechanical Automatic', price: 7500, imageUrl: 'placeholder', category: 'original' },
-  { id: '5', name: 'Lange 1', description: 'Manual Winding', price: 42000, imageUrl: 'placeholder', category: 'custom' },
-  { id: '6', name: 'Submariner Date', description: 'Waterproof Diver', price: 15000, imageUrl: 'placeholder', category: 'highcopy' }
-];
-
 // Helper to use absolute URLs on the server, and relative or NEXT_PUBLIC on client
 const getBaseUrl = () => {
   if (typeof window === 'undefined') {
-    return process.env.NEXT_PUBLIC_API_URL || 'http://backend:4000';
+    // Server-side context inside Docker network
+    return process.env.INTERNAL_API_URL || 'http://backend:4000';
   }
+  // Client-side browser context
   return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 };
 
@@ -21,23 +12,22 @@ export const watchService = {
   async getAll() {
     try {
       const res = await fetch(`${getBaseUrl()}/api/watches`, { cache: 'no-store' });
-      if (!res.ok) return MOCK_WATCHES;
-      const data = await res.json();
-      return data.length > 0 ? data : MOCK_WATCHES;
+      if (!res.ok) return [];
+      return await res.json();
     } catch (error) {
       console.error("Failed to fetch watches:", error);
-      return MOCK_WATCHES;
+      return [];
     }
   },
   
   async getById(id: string) {
     try {
       const res = await fetch(`${getBaseUrl()}/api/watches/${id}`, { cache: 'no-store' });
-      if (!res.ok) return MOCK_WATCHES.find(w => w.id === id) || null;
+      if (!res.ok) return null;
       return await res.json();
     } catch (error) {
       console.error(`Failed to fetch watch ${id}:`, error);
-      return MOCK_WATCHES.find(w => w.id === id) || null;
+      return null;
     }
   },
 

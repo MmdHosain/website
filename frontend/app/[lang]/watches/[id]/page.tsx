@@ -3,6 +3,7 @@ import { watchService } from "../../../../services/watch.service";
 import { ProductGallery } from "../../../../components/watches/pdp/ProductGallery";
 import { ProductInfo } from "../../../../components/watches/pdp/ProductInfo";
 import { ProductSpecs } from "../../../../components/watches/pdp/ProductSpecs";
+import { RelatedWatches } from "../../../../components/watches/pdp/RelatedWatches";
 
 export default async function ProductDetailPage({ 
   params: { lang, id } 
@@ -33,6 +34,9 @@ export default async function ProductDetailPage({
 
         {/* Extended Details */}
         <ProductSpecs dict={dict} isFa={isFa} />
+        
+        {/* Related Watches Section */}
+        <RelatedWatches lang={lang} dict={dict} isFa={isFa} currentWatchId={watch.id} />
       </div>
     </div>
   );

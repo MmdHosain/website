@@ -215,5 +215,15 @@
     "category": "Category",
     "save": "Save Changes",
     "actions": "Actions"
+  },
+  "support": {
+    "title": "PURCHASE SUPPORT",
+    "subtitle": "Frequently asked questions and delivery information.",
+    "faq1Q": "What is the delivery time?",
+    "faq1A": "Standard delivery takes 3-5 business days depending on your location. Bespoke sourcing may require additional time which will be confirmed prior to finalizing your order.",
+    "faq2Q": "Do you offer international shipping?",
+    "faq2A": "Yes, we ship globally using highly secure and fully insured courier services to ensure your timepiece arrives safely.",
+    "faq3Q": "What is the return policy?",
+    "faq3A": "We offer a 7-day review period for original watches. The watch must remain unworn and retain all original packaging and protective seals to be eligible for a return."
   }
 }

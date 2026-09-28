@@ -17,10 +17,13 @@ export function ProductCard({ lang, dict, isFa, watch }: { lang: string, dict: a
     <Link href={`/${lang}/watches/${watch.id}`} className="group block">
       {/* Image Container */}
       <div className="relative w-full aspect-[4/5] bg-[#f4f4f4] mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
-        {/* If backend image exists, normally would use Next/Image. Using geometry placeholder for now. */}
-        <div className="w-3/4 h-3/4 bg-gray-200/50 rounded-full flex items-center justify-center shadow-inner">
-          <span className="text-gray-400 font-serif text-sm">{watch.imageUrl !== 'placeholder' ? watch.imageUrl : 'Watch Front'}</span>
-        </div>
+        {watch.imageUrl && watch.imageUrl !== 'placeholder' ? (
+          <img src={watch.imageUrl} alt={watch.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        ) : (
+          <div className="w-3/4 h-3/4 bg-gray-200/50 rounded-full flex items-center justify-center shadow-inner">
+            <span className="text-gray-400 font-serif text-sm">Watch Front</span>
+          </div>
+        )}
         
         {/* Hover Overlay */}
         <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-center justify-center">
