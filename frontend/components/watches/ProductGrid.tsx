@@ -1,6 +1,7 @@
 import { ProductCard } from "./ProductCard";
+import { Watch } from "../../types";
 
-export function ProductGrid({ lang, dict, isFa, watches, currentCategory }: { lang: string, dict: any, isFa: boolean, watches: any[], currentCategory: string }) {
+export function ProductGrid({ lang, dict, isFa, watches, currentCategory }: { lang: string, dict: any, isFa: boolean, watches: Watch[], currentCategory: string }) {
   // Filter logic
   const displayWatches = currentCategory === 'all' 
     ? watches 

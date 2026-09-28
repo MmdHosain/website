@@ -1,4 +1,6 @@
-export function EditorialText({ activeSlide, isFa, discoverText, currentSlide }: { activeSlide: any, isFa: boolean, discoverText: string, currentSlide: number }) {
+import Link from "next/link";
+
+export function EditorialText({ activeSlide, isFa, discoverText, currentSlide, lang }: { activeSlide: any, isFa: boolean, discoverText: string, currentSlide: number, lang: string }) {
   return (
     <div className="w-full flex flex-col justify-center animate-fade-in-up" key={`text-${currentSlide}`} style={{ animationDelay: '200ms' }}>
       <h3 className="text-4xl md:text-6xl lg:text-7xl font-serif text-ariwatch-red mb-4 md:mb-6 uppercase tracking-wider drop-shadow-sm">
@@ -12,7 +14,7 @@ export function EditorialText({ activeSlide, isFa, discoverText, currentSlide }:
       </p>
       
       {/* Animated Button */}
-      <button className="group flex items-center gap-4 text-[10px] md:text-xs font-bold tracking-widest text-ariwatch-black uppercase self-start">
+      <Link href={`/${lang}/watches`} className="group flex items-center gap-4 text-[10px] md:text-xs font-bold tracking-widest text-ariwatch-black uppercase self-start">
         <span className="border-b border-ariwatch-black pb-1 group-hover:text-ariwatch-red group-hover:border-ariwatch-red transition-colors duration-300">
           {discoverText}
         </span>
@@ -22,7 +24,7 @@ export function EditorialText({ activeSlide, isFa, discoverText, currentSlide }:
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
-      </button>
+      </Link>
     </div>
   );
 }

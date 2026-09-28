@@ -1,6 +1,7 @@
 import { getDictionary } from "../../dictionaries";
 import { watchService } from "../../../services/watch.service";
 import Link from "next/link";
+import { Watch } from "../../../types";
 
 export default async function AdminDashboard({ params: { lang } }: { params: { lang: 'en' | 'fa' } }) {
   const dict = await getDictionary(lang);
@@ -31,7 +32,7 @@ export default async function AdminDashboard({ params: { lang } }: { params: { l
             </tr>
           </thead>
           <tbody>
-            {watches.map((watch: any) => (
+            {watches.map((watch: Watch) => (
               <tr key={watch.id} className="border-b border-gray-100 hover:bg-gray-50 transition">
                 <td className="p-4 text-xs text-gray-400 font-mono">{watch.id.substring(0, 8)}...</td>
                 <td className="p-4 text-sm font-bold text-ariwatch-black">{watch.name}</td>
@@ -42,7 +43,6 @@ export default async function AdminDashboard({ params: { lang } }: { params: { l
                 </td>
                 <td className="p-4 text-sm text-ariwatch-gray">${Number(watch.price).toLocaleString()}</td>
                 <td className="p-4 text-right flex justify-end gap-3">
-                   {/* In a real app, delete would be a client component firing an action */}
                    <Link href={`/${lang}/admin/watches/new?id=${watch.id}`} className="text-xs font-bold tracking-widest text-blue-600 hover:underline uppercase">
                      {dict.admin.edit}
                    </Link>

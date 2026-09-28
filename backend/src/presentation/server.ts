@@ -1,5 +1,7 @@
 import express from 'express';
 import { watchRoutes } from './routes/watchRoutes';
+import { authRoutes } from './routes/authRoutes';
+import { initDb } from '../infrastructure/database/postgres';
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -19,7 +21,11 @@ app.get('/health', (req, res) => {
 
 // Mount Domain Routes
 app.use('/api/watches', watchRoutes);
+app.use('/api/auth', authRoutes);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+// Initialize DB tables and start server
+initDb().then(() => {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
 });

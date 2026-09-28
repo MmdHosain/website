@@ -1,4 +1,6 @@
-export function ProductGallery({ watch, isFa }: { watch: any, isFa: boolean }) {
+import { Watch } from "../../../types";
+
+export function ProductGallery({ watch, isFa }: { watch: Watch, isFa: boolean }) {
   return (
     <div className="w-full lg:w-[55%] flex flex-col gap-4">
       {/* Main Image */}

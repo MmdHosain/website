@@ -6,6 +6,7 @@ import { getDictionary } from "../dictionaries";
 import { Header } from "../../components/layout/Header";
 import { Footer } from "../../components/layout/Footer";
 import { ConciergeFAB } from "../../components/layout/ConciergeFAB";
+import { TopProgressBar } from "../../components/layout/TopProgressBar";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default async function RootLayout({
   return (
     <html lang={lang} dir={isFa ? 'rtl' : 'ltr'}>
       <body className={`${isFa ? 'font-vazir' : 'font-inter'} ${inter.variable} ${vazir.variable} ${playfair.variable} bg-white text-ariwatch-black`}>
+        <TopProgressBar />
         <Header lang={lang} dict={dict} isFa={isFa} />
         <main className="min-h-screen bg-white">
           {children}

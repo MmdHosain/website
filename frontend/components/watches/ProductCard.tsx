@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { Watch } from "../../types";
 
-export function ProductCard({ lang, dict, isFa, watch }: { lang: string, dict: any, isFa: boolean, watch: any }) {
+export function ProductCard({ lang, dict, isFa, watch }: { lang: string, dict: any, isFa: boolean, watch: Watch }) {
   // Determine category badge text and style
   const category = watch.category || 'original'; // default fallback
   const badgeText = 
@@ -27,9 +28,9 @@ export function ProductCard({ lang, dict, isFa, watch }: { lang: string, dict: a
         
         {/* Hover Overlay */}
         <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-center justify-center">
-          <button className="translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 bg-white text-ariwatch-black text-[10px] font-bold tracking-widest uppercase px-6 py-3 shadow-lg hover:bg-black hover:text-white">
+          <span className="translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 bg-white text-ariwatch-black text-[10px] font-bold tracking-widest uppercase px-6 py-3 shadow-lg hover:bg-black hover:text-white">
             {dict.plp.viewDetails}
-          </button>
+          </span>
         </div>
         
         {/* Badges */}

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { watchService } from "../services/watch.service";
+import { Watch } from "../types";
 
-export function useWatchForm(lang: string, initialData?: any) {
+export function useWatchForm(lang: string, initialData?: Watch | null) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -33,7 +34,7 @@ export function useWatchForm(lang: string, initialData?: any) {
       if (initialData?.id) {
         await watchService.update(initialData.id, payload);
       } else {
-        await watchService.create(payload);
+        await watchService.create(payload as Omit<Watch, 'id'>);
       }
       router.push(`/${lang}/admin`);
       router.refresh();

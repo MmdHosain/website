@@ -1,10 +1,11 @@
 import { watchService } from "../../../services/watch.service";
 import { ProductCard } from "../ProductCard";
+import { Watch } from "../../../types";
 
 export async function RelatedWatches({ lang, dict, isFa, currentWatchId }: { lang: string, dict: any, isFa: boolean, currentWatchId: string }) {
   const allWatches = await watchService.getAll();
   // Filter out the current watch and select up to 3 for the related section
-  const related = allWatches.filter((w: any) => w.id !== currentWatchId).slice(0, 3);
+  const related = allWatches.filter((w: Watch) => w.id !== currentWatchId).slice(0, 3);
   
   if (related.length === 0) return null;
 
@@ -14,7 +15,7 @@ export async function RelatedWatches({ lang, dict, isFa, currentWatchId }: { lan
         {dict.pdp.relatedProducts}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {related.map((watch: any) => (
+        {related.map((watch: Watch) => (
           <ProductCard key={watch.id} lang={lang} dict={dict} isFa={isFa} watch={watch} />
         ))}
       </div>

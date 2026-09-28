@@ -1,0 +1,68 @@
+{
+  "concierge": {
+    "title": "BESPOKE CONCIERGE",
+    "subtitle": "Looking for a model not listed in our collection? Our specialists are at your disposal to source exactly what you need.",
+    "formName": "Full Name",
+    "formEmail": "Email Address",
+    "formModel": "Watch Brand & Reference Model",
+    "formMessage": "Additional Details / Requirements",
+    "submit": "SUBMIT REQUEST",
+    "fabText": "Speak to a Specialist",
+    "successTitle": "REQUEST RECEIVED",
+    "successDesc": "Our specialists have received your inquiry and will contact you shortly."
+  },
+  "story": {
+    "title": "THE WORLD OF ARIWATCH",
+    "subtitle": "OUR VISION, HISTORY AND CRAFT",
+    "p1": "At Ariwatch, we believe that a luxury timepiece is more than just a tool to tell time; it is a reflection of identity, a masterpiece of micro-engineering, and a legacy meant to be passed down through generations. Since our inception under the Arash Ariya Rad Company, our goal has been to provide unparalleled access to the world's most coveted watches.",
+    "p2": "We stand on the pillars of transparency, trust, and refined aesthetics. Whether it is an original classic or a bespoke sourced model, our commitment remains the same: delivering excellence without compromise.",
+    "articles": {
+      "arashKhandan": {
+        "title": "ARASH KHANDAN AND THE ARIWATCH JOURNEY",
+        "subtitle": "LEADERSHIP",
+        "content1": "The development journey of AriWatch began with a simple yet powerful vision: to create a secure, transparent, and luxurious space for watch enthusiasts worldwide. Arash Khandan founded this platform with a deep understanding of market needs and the ongoing challenges regarding product authenticity.",
+        "content2": "The primary focus is on providing precise information, clear categorization (Original, High-Copy, and Custom Order), and eliminating ambiguity in the purchasing process. This approach has transformed AriWatch from a simple store into a trusted authority."
+      },
+      "melina": {
+        "title": "MELINA AND THE VISUAL LANGUAGE OF THE PRODUCTS",
+        "subtitle": "VISUAL STORY",
+        "content1": "In the world of luxury watches, details are everything. The visual language of AriWatch, directed by Melina, is built upon a pure, distraction-free presentation of the product.",
+        "content2": "Clean wrist-shots, precise lighting, and absolute focus on the texture of the dial, case, and strap allow the user to experience the product in full detail before purchasing. This rigorous standard in content creation reflects our respect for our audience."
+      },
+      "company": {
+        "title": "ARASH ARIYA RAD COMPANY: THE OPERATING FOUNDATION",
+        "subtitle": "THE COMPANY",
+        "content1": "Behind every flawless luxury experience lies a robust operational structure. Arash Ariya Rad Company serves as the core and operational foundation of AriWatch, responsible for ensuring quality, supply management, and logistics.",
+        "content2": "Our commitment to international trade laws, multi-stage quality control prior to shipping, and legal customer support are all managed through this cohesive corporate structure, ensuring you experience complete peace of mind with your purchase."
+      },
+      "behindTheScenes": {
+        "title": "NEW MODELS AND BEHIND THE SCENES",
+        "subtitle": "ARIWATCH",
+        "content1": "The luxury watch world is constantly evolving. At AriWatch, we continuously strive to source the newest and rarest models, including exclusive Cartier and Rolex collections, as quickly as possible.",
+        "content2": "In this section, we take you behind the scenes of our sourcing process, expert inspections, and the preparation of new product videos. Our transparency is not limited to sales; it covers the entire journey from procurement to delivery."
+      }
+    }
+  },
+  "admin": {
+    "dashboard": "Admin Dashboard",
+    "products": "Products",
+    "addNew": "Add New",
+    "edit": "Edit",
+    "delete": "Delete",
+    "name": "Name",
+    "price": "Price",
+    "category": "Category",
+    "save": "Save Changes",
+    "actions": "Actions"
+  },
+  "support": {
+    "title": "PURCHASE SUPPORT",
+    "subtitle": "Frequently asked questions and delivery information.",
+    "faq1Q": "What is the delivery time?",
+    "faq1A": "Standard delivery takes 3-5 business days depending on your location. Bespoke sourcing may require additional time which will be confirmed prior to finalizing your order.",
+    "faq2Q": "Do you offer international shipping?",
+    "faq2A": "Yes, we ship globally using highly secure and fully insured courier services to ensure your timepiece arrives safely.",
+    "faq3Q": "What is the return policy?",
+    "faq3A": "We offer a 7-day review period for original watches. The watch must remain unworn and retain all original packaging and protective seals to be eligible for a return."
+  }
+}

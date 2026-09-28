@@ -1,8 +1,9 @@
 "use client";
 
 import { useWatchForm } from "../../hooks/useWatchForm";
+import { Watch } from "../../types";
 
-export function WatchForm({ lang, dict, initialData }: { lang: string, dict: any, initialData?: any }) {
+export function WatchForm({ lang, dict, initialData }: { lang: string, dict: any, initialData?: Watch | null }) {
   const {
     formData,
     loading,

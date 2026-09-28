@@ -47,6 +47,7 @@ export function EditorialSlider({ lang, dict, isFa }: EditorialSliderProps) {
           isFa={isFa} 
           discoverText={dict.editorial.discover} 
           currentSlide={currentSlide} 
+          lang={lang}
         />
       </div>
 

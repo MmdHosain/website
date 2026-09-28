@@ -1,3 +1,5 @@
+import { Watch } from '../types';
+
 // Helper to use absolute URLs on the server, and relative or NEXT_PUBLIC on client
 const getBaseUrl = () => {
   if (typeof window === 'undefined') {
@@ -9,7 +11,7 @@ const getBaseUrl = () => {
 };
 
 export const watchService = {
-  async getAll() {
+  async getAll(): Promise<Watch[]> {
     try {
       const res = await fetch(`${getBaseUrl()}/api/watches`, { cache: 'no-store' });
       if (!res.ok) return [];
@@ -20,7 +22,7 @@ export const watchService = {
     }
   },
   
-  async getById(id: string) {
+  async getById(id: string): Promise<Watch | null> {
     try {
       const res = await fetch(`${getBaseUrl()}/api/watches/${id}`, { cache: 'no-store' });
       if (!res.ok) return null;
@@ -31,7 +33,7 @@ export const watchService = {
     }
   },
 
-  async create(data: any) {
+  async create(data: Omit<Watch, 'id'>): Promise<Watch> {
     const res = await fetch(`${getBaseUrl()}/api/watches`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -41,7 +43,7 @@ export const watchService = {
     return await res.json();
   },
 
-  async update(id: string, data: any) {
+  async update(id: string, data: Partial<Watch>): Promise<Watch> {
     const res = await fetch(`${getBaseUrl()}/api/watches/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -51,7 +53,7 @@ export const watchService = {
     return await res.json();
   },
 
-  async delete(id: string) {
+  async delete(id: string): Promise<boolean> {
     const res = await fetch(`${getBaseUrl()}/api/watches/${id}`, {
       method: 'DELETE',
     });

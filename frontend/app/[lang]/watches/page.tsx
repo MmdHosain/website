@@ -34,12 +34,6 @@ export default async function WatchesPage({
         <FilterBar lang={lang} dict={dict} isFa={isFa} currentCategory={currentCategory} />
         <ProductGrid lang={lang} dict={dict} isFa={isFa} watches={watches} currentCategory={currentCategory} />
         
-        {/* Load More Button Placeholder */}
-        <div className="mt-20 flex justify-center">
-           <button className="border border-ariwatch-black px-12 py-4 text-[10px] md:text-xs font-bold tracking-widest text-ariwatch-black uppercase hover:bg-black hover:text-white transition-all">
-             {dict.plp.loadMore}
-           </button>
-        </div>
       </div>
     </div>
   );

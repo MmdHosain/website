@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { Watch } from "../../../types";
 
-export function ProductInfo({ lang, dict, isFa, watch }: { lang: string, dict: any, isFa: boolean, watch: any }) {
+export function ProductInfo({ lang, dict, isFa, watch }: { lang: string, dict: any, isFa: boolean, watch: Watch }) {
   const category = watch.category || 'original';
   
   return (
@@ -23,15 +24,17 @@ export function ProductInfo({ lang, dict, isFa, watch }: { lang: string, dict: a
           {watch.description}. {dict.pdp.descriptionMock}
         </p>
         {category === 'custom' ? (
-          <Link href={`/${lang}/concierge`}>
+          <Link href={`/${lang}/concierge`} className="block w-full">
             <button className="w-full bg-ariwatch-black text-white text-[10px] md:text-xs font-bold tracking-widest uppercase py-4 hover:bg-black transition-colors">
               {dict.pdp.requestModel}
             </button>
           </Link>
         ) : (
-          <button className="w-full bg-ariwatch-black text-white text-[10px] md:text-xs font-bold tracking-widest uppercase py-4 hover:bg-black transition-colors">
-            {dict.pdp.addToCart}
-          </button>
+          <Link href={`/${lang}/cart`} className="block w-full">
+            <button className="w-full bg-ariwatch-black text-white text-[10px] md:text-xs font-bold tracking-widest uppercase py-4 hover:bg-black transition-colors">
+              {dict.pdp.addToCart}
+            </button>
+          </Link>
         )}
       </div>
 

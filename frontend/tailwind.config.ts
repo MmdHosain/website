@@ -58,6 +58,10 @@ const config: Config = {
         marquee: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' }
+        },
+        'page-enter': {
+          '0%': { opacity: '0', transform: 'translateY(10px)', filter: 'blur(4px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)', filter: 'blur(0)' }
         }
       },
       animation: {
@@ -69,6 +73,7 @@ const config: Config = {
         'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'fade-in-scale': 'fade-in-scale 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         marquee: 'marquee 25s linear infinite',
+        'page-enter': 'page-enter 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
       }
     },
   },
