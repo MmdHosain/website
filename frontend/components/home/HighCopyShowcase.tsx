@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export function HighCopyShowcase({ lang, dict, isFa }: { lang: string, dict: any, isFa: boolean }) {
+export function HighCopyShowcase({ lang, dict }: { lang: string, dict: any, isFa: boolean }) {
   return (
     <section className="bg-white w-full border-t border-gray-100">
       {/* Top Section */}
@@ -14,10 +14,8 @@ export function HighCopyShowcase({ lang, dict, isFa }: { lang: string, dict: any
         <p className="text-ariwatch-gray text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-8">
           {dict.highCopyShowcase.desc}
         </p>
-        <Link href={`/${lang}/watches?category=highcopy`}>
-          <button className="border border-ariwatch-black px-8 py-3 text-[10px] md:text-xs font-bold tracking-widest text-ariwatch-black uppercase hover:bg-black hover:text-white transition-all">
-            {dict.highCopyShowcase.cta}
-          </button>
+        <Link href={`/${lang}/watches?category=highcopy`} className="inline-block border border-ariwatch-black px-8 py-3 text-[10px] md:text-xs font-bold tracking-widest text-ariwatch-black uppercase hover:bg-black hover:text-white transition-all">
+          {dict.highCopyShowcase.cta}
         </Link>
       </div>
 

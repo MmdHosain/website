@@ -25,10 +25,8 @@ export function CategorySpotlight({ lang, dict, isFa }: { lang: string, dict: an
         <p className="text-ariwatch-gray text-sm md:text-base leading-relaxed mb-10 max-w-md">
           {dict.categorySpotlight.desc}
         </p>
-        <Link href={`/${lang}/watches?category=original`}>
-          <button className="border border-ariwatch-black px-8 py-3 text-[10px] md:text-xs font-bold tracking-widest text-ariwatch-black uppercase hover:bg-black hover:text-white transition-all">
-            {dict.categorySpotlight.cta}
-          </button>
+        <Link href={`/${lang}/watches?category=original`} className="inline-block border border-ariwatch-black px-8 py-3 text-[10px] md:text-xs font-bold tracking-widest text-ariwatch-black uppercase hover:bg-black hover:text-white transition-all">
+          {dict.categorySpotlight.cta}
         </Link>
       </div>
     </section>

@@ -11,10 +11,8 @@ export function CategorisedLookbook({ lang, dict, isFa }: { lang: string, dict: 
         <p className="text-ariwatch-gray text-sm md:text-base leading-relaxed max-w-3xl mx-auto mb-8">
           {dict.lookbook.subtitle}
         </p>
-        <Link href={`/${lang}/watches`}>
-          <button className="border border-ariwatch-black px-8 py-3 text-[10px] md:text-xs font-bold tracking-widest text-ariwatch-black uppercase hover:bg-black hover:text-white transition-all">
-            {dict.lookbook.cta}
-          </button>
+        <Link href={`/${lang}/watches`} className="inline-block border border-ariwatch-black px-8 py-3 text-[10px] md:text-xs font-bold tracking-widest text-ariwatch-black uppercase hover:bg-black hover:text-white transition-all">
+          {dict.lookbook.cta}
         </Link>
       </div>
 

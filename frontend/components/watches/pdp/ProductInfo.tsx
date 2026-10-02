@@ -1,8 +1,20 @@
-import Link from "next/link";
-import { Watch } from "../../../types";
+"use client";
 
-export function ProductInfo({ lang, dict, isFa, watch }: { lang: string, dict: any, isFa: boolean, watch: Watch }) {
+import Link from "next/link";
+import { useState } from "react";
+import { Watch } from "../../../types";
+import { useCart } from "../../../../context/CartContext";
+
+export function ProductInfo({ lang, dict, watch }: { lang: string, dict: any, isFa: boolean, watch: Watch }) {
   const category = watch.category || 'original';
+  const { addToCart } = useCart();
+  const [added, setAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    addToCart(watch);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+  };
   
   return (
     <div className="w-full lg:w-[45%] flex flex-col pt-4 lg:pt-0">
@@ -24,17 +36,13 @@ export function ProductInfo({ lang, dict, isFa, watch }: { lang: string, dict: a
           {watch.description}. {dict.pdp.descriptionMock}
         </p>
         {category === 'custom' ? (
-          <Link href={`/${lang}/concierge`} className="block w-full">
-            <button className="w-full bg-ariwatch-black text-white text-[10px] md:text-xs font-bold tracking-widest uppercase py-4 hover:bg-black transition-colors">
-              {dict.pdp.requestModel}
-            </button>
+          <Link href={`/${lang}/concierge`} className="block w-full text-center bg-ariwatch-black text-white text-[10px] md:text-xs font-bold tracking-widest uppercase py-4 hover:bg-black transition-colors">
+            {dict.pdp.requestModel}
           </Link>
         ) : (
-          <Link href={`/${lang}/cart`} className="block w-full">
-            <button className="w-full bg-ariwatch-black text-white text-[10px] md:text-xs font-bold tracking-widest uppercase py-4 hover:bg-black transition-colors">
-              {dict.pdp.addToCart}
-            </button>
-          </Link>
+          <button onClick={handleAddToCart} className="w-full bg-ariwatch-black text-white text-[10px] md:text-xs font-bold tracking-widest uppercase py-4 hover:bg-black transition-colors">
+            {added ? "ADDED TO CART" : dict.pdp.addToCart}
+          </button>
         )}
       </div>
 

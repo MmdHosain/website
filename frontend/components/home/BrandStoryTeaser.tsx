@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export function BrandStoryTeaser({ lang, dict, isFa }: { lang: string, dict: any, isFa: boolean }) {
+export function BrandStoryTeaser({ lang, dict }: { lang: string, dict: any, isFa: boolean }) {
   const storyLinks = [
     `/${lang}/story/arash-khandan`,
     `/${lang}/story/melina`,
@@ -46,10 +46,8 @@ export function BrandStoryTeaser({ lang, dict, isFa }: { lang: string, dict: any
 
       {/* Bottom Action */}
       <div className="text-center">
-        <Link href={`/${lang}/story`}>
-          <button className="border border-ariwatch-black px-10 py-4 text-[10px] md:text-xs font-bold tracking-widest text-ariwatch-black uppercase hover:bg-black hover:text-white active:scale-95 transition-all">
-            {dict.storyTeaser.cta}
-          </button>
+        <Link href={`/${lang}/story`} className="inline-block border border-ariwatch-black px-10 py-4 text-[10px] md:text-xs font-bold tracking-widest text-ariwatch-black uppercase hover:bg-black hover:text-white active:scale-95 transition-all">
+          {dict.storyTeaser.cta}
         </Link>
       </div>
     </section>

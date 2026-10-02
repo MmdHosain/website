@@ -17,15 +17,11 @@ export function HeroText({ lang, dict, isFa }: HeroTextProps) {
           {dict.home.heroSubheadline}
         </p>
         <div className="flex flex-col sm:flex-row gap-2 md:gap-4">
-          <Link href={`/${lang}/watches`} className="flex-1">
-            <button className="w-full px-4 py-2 md:px-8 md:py-4 bg-ariwatch-red text-white text-xs md:text-sm font-bold tracking-widest rounded-[4px] hover:bg-red-800 transition-colors shadow-lg shadow-ariwatch-red/20">
-              {dict.home.ctaPrimary}
-            </button>
+          <Link href={`/${lang}/watches`} className="flex-1 w-full block text-center px-4 py-2 md:px-8 md:py-4 bg-ariwatch-red text-white text-xs md:text-sm font-bold tracking-widest rounded-[4px] hover:bg-red-800 transition-colors shadow-lg shadow-ariwatch-red/20">
+            {dict.home.ctaPrimary}
           </Link>
-          <Link href={`/${lang}/story`} className="flex-1">
-            <button className="w-full px-4 py-2 md:px-8 md:py-4 bg-transparent text-[#121212] border border-[#121212]/20 text-xs md:text-sm font-bold tracking-widest rounded-[4px] hover:bg-[#121212]/5 transition-colors">
-              {dict.home.ctaSecondary}
-            </button>
+          <Link href={`/${lang}/story`} className="flex-1 w-full block text-center px-4 py-2 md:px-8 md:py-4 bg-transparent text-[#121212] border border-[#121212]/20 text-xs md:text-sm font-bold tracking-widest rounded-[4px] hover:bg-[#121212]/5 transition-colors">
+            {dict.home.ctaSecondary}
           </Link>
         </div>
       </div>
