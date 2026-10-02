@@ -1,6 +1,8 @@
 import { getDictionary } from "../../dictionaries";
 
-export default async function SupportPage({ params: { lang } }: { params: { lang: 'en' | 'fa' } }) {
+export default async function SupportPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: requestedLang } = await params;
+  const lang = requestedLang === "en" ? "en" : "fa";
   const dict = await getDictionary(lang);
   
   return (

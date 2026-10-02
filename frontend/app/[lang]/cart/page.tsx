@@ -1,7 +1,9 @@
 import { getDictionary } from "../../dictionaries";
 import { CartView } from "../../../components/cart/CartView";
 
-export default async function CartPage({ params: { lang } }: { params: { lang: 'en' | 'fa' } }) {
+export default async function CartPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: requestedLang } = await params;
+  const lang = requestedLang === "en" ? "en" : "fa";
   const dict = await getDictionary(lang);
   
   return (

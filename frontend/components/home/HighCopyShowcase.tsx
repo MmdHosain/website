@@ -23,15 +23,11 @@ export function HighCopyShowcase({ lang, dict }: { lang: string, dict: any, isFa
       <div className="flex flex-col md:flex-row gap-6 max-w-[1500px] mx-auto px-6 pb-20 items-stretch">
         {/* Left Block */}
         <div className="w-full md:w-[65%] bg-[#f4f4f4] min-h-[360px] flex items-center justify-center p-8 border border-gray-100/50">
-          <div className="w-full max-w-md aspect-[4/3] bg-gray-200/50 flex items-center justify-center text-gray-400 border border-gray-200 shadow-sm">
-             Horizontal Watch (Santos Style)
-          </div>
+          <img src="/resourses/photo-1614164185128-e4ec99c436d7.jpg" alt={dict.highCopyShowcase.title} loading="lazy" className="w-full max-w-md aspect-[4/3] object-cover" />
         </div>
         {/* Right Block */}
         <div className="w-full md:w-[35%] bg-white border border-gray-100 min-h-[360px] flex items-center justify-center p-8">
-          <div className="w-full max-w-xs aspect-[3/4] bg-gray-50 flex items-center justify-center text-gray-400 border border-gray-100">
-             Vertical Macro Dial Closeup
-          </div>
+          <img src="/resourses/photo-1522312346375-d1a52e2b99b3.jpg" alt={dict.highCopyShowcase.badge} loading="lazy" className="w-full max-w-xs aspect-[3/4] object-cover" />
         </div>
       </div>
     </section>

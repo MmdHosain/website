@@ -1,48 +1,78 @@
 services:
   db:
-    container_name: ariwatch-db
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: luxe_user
-      POSTGRES_PASSWORD: luxe_password
-      POSTGRES_DB: luxe_watches
+      POSTGRES_USER: ${POSTGRES_USER:-luxe_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-luxe_password}
+      POSTGRES_DB: ${POSTGRES_DB:-luxe_watches}
     ports:
       - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./backend/src/infrastructure/database/init.sql:/docker-entrypoint-initdb.d/init.sql
-
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
   backend:
-    container_name: ariwatch-backend
-    build:
-      context: ./backend
-    command: npm run dev
+    build: ./backend
     ports:
       - "4000:4000"
     environment:
-      DATABASE_URL: postgres://luxe_user:luxe_password@db:5432/luxe_watches
-    depends_on:
-      - db
+      NODE_ENV: development
+      DATABASE_URL: postgres://${POSTGRES_USER:-luxe_user}:${POSTGRES_PASSWORD:-luxe_password}@db:5432/${POSTGRES_DB:-luxe_watches}
+      ADMIN_MOBILES: ${ADMIN_MOBILES:-09123456789}
+      FRONTEND_ORIGIN: ${FRONTEND_ORIGIN:-http://localhost:3000}
+      API_PUBLIC_URL: ${API_PUBLIC_URL:-http://localhost:4000}
+      ZARINPAL_MERCHANT_ID: ${ZARINPAL_MERCHANT_ID:-00000000-0000-0000-0000-000000000000}
+      ZARINPAL_SANDBOX: ${ZARINPAL_SANDBOX:-true}
+      SEED_CATALOG: ${SEED_CATALOG:-true}
+      OTP_PROVIDER_URL: ${OTP_PROVIDER_URL:-}
+      OTP_PROVIDER_TOKEN: ${OTP_PROVIDER_TOKEN:-}
+      SMS_NOTIFICATIONS_ENABLED: ${SMS_NOTIFICATIONS_ENABLED:-false}
+      SMS_PROVIDER_URL: ${SMS_PROVIDER_URL:-}
+      SMS_PROVIDER_TOKEN: ${SMS_PROVIDER_TOKEN:-}
+      TELEGRAM_ENABLED: ${TELEGRAM_ENABLED:-false}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      TELEGRAM_ADMIN_CHAT_IDS: ${TELEGRAM_ADMIN_CHAT_IDS:-}
+      TELEGRAM_WEBHOOK_SECRET: ${TELEGRAM_WEBHOOK_SECRET:-}
+      INSTAGRAM_ENABLED: ${INSTAGRAM_ENABLED:-false}
+      INSTAGRAM_USER_ID: ${INSTAGRAM_USER_ID:-}
+      INSTAGRAM_ACCESS_TOKEN: ${INSTAGRAM_ACCESS_TOKEN:-}
+      INSTAGRAM_API_VERSION: ${INSTAGRAM_API_VERSION:-}
+      TOROB_ENABLED: ${TOROB_ENABLED:-false}
+      TOROB_AUDIENCE: ${TOROB_AUDIENCE:-}
+      BASALAM_ENABLED: ${BASALAM_ENABLED:-false}
+      BASALAM_ACCESS_TOKEN: ${BASALAM_ACCESS_TOKEN:-}
+      BASALAM_VENDOR_ID: ${BASALAM_VENDOR_ID:-}
+      BASALAM_PRICE_UNIT: ${BASALAM_PRICE_UNIT:-}
+      PRICE_REPORT_ENABLED: ${PRICE_REPORT_ENABLED:-false}
+      PRICE_REPORT_URL: ${PRICE_REPORT_URL:-}
+      PRICE_REPORT_TOKEN: ${PRICE_REPORT_TOKEN:-}
+      MEDIA_DIRECTORY: /app/uploads/catalog
     volumes:
-      - ./backend:/app
-      - /app/node_modules
-
+      - catalog_media:/app/uploads/catalog
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:4000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
   frontend:
-    container_name: ariwatch-frontend
     build:
       context: ./frontend
-    command: npm run dev
+      args:
+        NEXT_PUBLIC_SITE_URL: ${FRONTEND_ORIGIN:-http://localhost:3000}
     ports:
       - "3000:3000"
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:4000
       INTERNAL_API_URL: http://backend:4000
     depends_on:
-      - backend
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-      - /app/.next
-
+      backend:
+        condition: service_healthy
 volumes:
   postgres_data:
+  catalog_media:

@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Inter, Playfair_Display } from "next/font/google";
 import "../globals.css";
 import { getDictionary } from "../dictionaries";
 import { Header } from "../../components/layout/Header";
@@ -8,24 +6,7 @@ import { Footer } from "../../components/layout/Footer";
 import { ConciergeFAB } from "../../components/layout/ConciergeFAB";
 import { TopProgressBar } from "../../components/layout/TopProgressBar";
 import { CartProvider } from "../../context/CartContext";
-
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: '--font-inter',
-  fallback: ['InterLocal', 'system-ui', 'Arial', 'sans-serif']
-});
-
-const vazir = localFont({ 
-  src: '../../public/fonts/Vazirmatn-Regular.woff2',
-  variable: '--font-vazir',
-  fallback: ['VazirmatnLocal', 'Tahoma', 'system-ui', 'sans-serif']
-});
-
-const playfair = Playfair_Display({ 
-  subsets: ["latin"], 
-  variable: '--font-playfair',
-  fallback: ['Georgia', 'serif']
-});
+import { CollectionProvider } from "../../context/CollectionContext";
 
 export const metadata: Metadata = {
   title: "ARIWATCH | Luxury Watches",
@@ -34,18 +15,21 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params: { lang },
+  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { lang: 'en' | 'fa' };
+  params: Promise<{ lang: string }>;
 }>) {
+  const { lang: requestedLang } = await params;
+  const lang = requestedLang === "en" ? "en" : "fa";
   const dict = await getDictionary(lang);
   const isFa = lang === 'fa';
 
   return (
     <html lang={lang} dir={isFa ? 'rtl' : 'ltr'}>
-      <body className={`${isFa ? 'font-vazir' : 'font-inter'} ${inter.variable} ${vazir.variable} ${playfair.variable} bg-white text-ariwatch-black`}>
+      <body className={`${isFa ? 'font-vazir' : 'font-inter'} bg-white text-ariwatch-black`}>
         <CartProvider>
+          <CollectionProvider>
           <TopProgressBar />
           <Header lang={lang} dict={dict} isFa={isFa} />
           <main className="min-h-screen bg-white">
@@ -53,6 +37,7 @@ export default async function RootLayout({
           </main>
           <Footer lang={lang} dict={dict} isFa={isFa} />
           <ConciergeFAB lang={lang} dict={dict} isFa={isFa} />
+          </CollectionProvider>
         </CartProvider>
       </body>
     </html>

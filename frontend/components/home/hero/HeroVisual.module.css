@@ -1,0 +1,67 @@
+.slide {
+  animation: arrive 800ms ease-out both;
+}
+
+.stage {
+  position: relative;
+  height: clamp(250px, 35svh, 350px);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 45%, #fffdf8 0%, transparent 68%);
+}
+
+.ground {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  width: 42%;
+  height: 16px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #6d6651;
+  filter: blur(14px);
+  opacity: 0.12;
+}
+
+.float {
+  position: absolute;
+  inset: 16px;
+  animation: hover 7s ease-in-out infinite;
+}
+
+.float[data-paused="true"] {
+  animation-play-state: paused;
+}
+
+.watch {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: translateY(var(--watch-offset)) scale(var(--watch-scale));
+  filter: drop-shadow(10px 16px 12px rgb(69 59 39 / 16%));
+}
+
+@media (min-width: 768px) {
+  .stage { height: clamp(370px, 56svh, 600px); }
+  .float { inset: 24px; }
+  .ground { bottom: 14px; height: 24px; }
+}
+
+@keyframes arrive {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hover {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide, .float { animation: none; }
+}

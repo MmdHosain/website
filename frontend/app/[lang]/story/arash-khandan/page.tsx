@@ -1,10 +1,12 @@
 import { getDictionary } from "../../../dictionaries";
 import Link from "next/link";
 
-export default async function ArashKhandanPage({ params: { lang } }: { params: { lang: 'en' | 'fa' } }) {
+export default async function ArashKhandanPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: requestedLang } = await params;
+  const lang = requestedLang === "en" ? "en" : "fa";
   const dict = await getDictionary(lang);
   const article = dict.story.articles.arashKhandan;
-  
+
   return (
     <div className="w-full min-h-screen bg-white pt-24 md:pt-32 pb-24">
       <div className="max-w-[1000px] mx-auto px-6 md:px-12">
@@ -22,10 +24,10 @@ export default async function ArashKhandanPage({ params: { lang } }: { params: {
              {article.title}
            </h1>
         </div>
-        
+
         {/* Visual Hero */}
         <div className="w-full aspect-[21/9] bg-[#f4f4f4] mb-16 flex items-center justify-center border border-gray-100 shadow-sm">
-          <span className="text-gray-400 font-serif">Leadership Portrait Placeholder</span>
+          <img src="/resourses/photo-1524592094714-0f0654e20314.jpg" alt="" className="w-full h-full object-cover" />
         </div>
 
         {/* Content Flow */}

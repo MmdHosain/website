@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.next/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+*.log
+.preview-db/
+.pnpm-store/
+tmp/
+backend/uploads/

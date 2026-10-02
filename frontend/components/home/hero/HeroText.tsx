@@ -1,27 +1,34 @@
 import Link from "next/link";
 
+export interface HeroCopy {
+  heroHeadline: string;
+  heroSubheadline: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+}
+
 interface HeroTextProps {
-  lang: 'en' | 'fa';
-  dict: any;
+  lang: "en" | "fa";
+  copy: HeroCopy;
   isFa: boolean;
 }
 
-export function HeroText({ lang, dict, isFa }: HeroTextProps) {
+export function HeroText({ lang, copy, isFa }: HeroTextProps) {
   return (
-    <div className={`w-full h-1/2 md:h-full md:w-[45%] flex flex-col justify-center px-6 md:px-16 lg:px-24 py-4 md:py-20 z-20 ${isFa ? 'order-2 md:order-1' : 'order-2 md:order-1'}`}>
-      <div className="max-w-lg">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#121212] mb-2 md:mb-6 leading-[1.1] md:leading-[1.2] tracking-tight">
-          {dict.home.heroHeadline}
+    <div className="relative order-2 min-w-0 self-center md:order-1" dir={isFa ? "rtl" : "ltr"}>
+      <div className="mx-auto max-w-lg text-center md:text-start">
+        <h1 className="text-[28px] font-black leading-[1.25] tracking-tight text-[#22211f] sm:text-4xl md:text-[40px] lg:text-5xl xl:text-6xl">
+          {copy.heroHeadline}
         </h1>
-        <p className="text-sm sm:text-base md:text-xl text-[#666666] mb-4 md:mb-12 font-medium leading-relaxed">
-          {dict.home.heroSubheadline}
+        <p className="mx-auto mt-3 max-w-md text-sm font-medium leading-relaxed text-[#77736b] md:mx-0 md:mt-6 md:text-base lg:text-lg">
+          {copy.heroSubheadline}
         </p>
-        <div className="flex flex-col sm:flex-row gap-2 md:gap-4">
-          <Link href={`/${lang}/watches`} className="flex-1 w-full block text-center px-4 py-2 md:px-8 md:py-4 bg-ariwatch-red text-white text-xs md:text-sm font-bold tracking-widest rounded-[4px] hover:bg-red-800 transition-colors shadow-lg shadow-ariwatch-red/20">
-            {dict.home.ctaPrimary}
+        <div className="mt-5 grid grid-cols-2 gap-3 md:mt-9 lg:gap-4">
+          <Link href={`/${lang}/watches`} className="flex min-h-12 items-center justify-center rounded-[3px] bg-ariwatch-red px-3 py-3 text-center text-[11px] font-semibold tracking-wide text-white shadow-lg shadow-ariwatch-red/10 transition-colors hover:bg-red-800 sm:text-xs lg:text-sm">
+            {copy.ctaPrimary}
           </Link>
-          <Link href={`/${lang}/story`} className="flex-1 w-full block text-center px-4 py-2 md:px-8 md:py-4 bg-transparent text-[#121212] border border-[#121212]/20 text-xs md:text-sm font-bold tracking-widest rounded-[4px] hover:bg-[#121212]/5 transition-colors">
-            {dict.home.ctaSecondary}
+          <Link href={`/${lang}/story`} className="flex min-h-12 items-center justify-center rounded-[3px] border border-[#bfb8aa] px-3 py-3 text-center text-[11px] font-semibold tracking-wide text-[#39362f] transition-colors hover:bg-white/50 sm:text-xs lg:text-sm">
+            {copy.ctaSecondary}
           </Link>
         </div>
       </div>

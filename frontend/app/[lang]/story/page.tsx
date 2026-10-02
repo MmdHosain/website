@@ -1,6 +1,8 @@
 import { getDictionary } from "../../dictionaries";
 
-export default async function StoryPage({ params: { lang } }: { params: { lang: 'en' | 'fa' } }) {
+export default async function StoryPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: requestedLang } = await params;
+  const lang = requestedLang === "en" ? "en" : "fa";
   const dict = await getDictionary(lang);
   
   return (
@@ -18,9 +20,7 @@ export default async function StoryPage({ params: { lang } }: { params: { lang: 
         
         {/* Visual Hero */}
         <div className="w-full aspect-[16/9] bg-[#f4f4f4] mb-16 flex items-center justify-center border border-gray-100 shadow-sm">
-          <div className="w-1/3 aspect-square bg-gray-200/50 flex items-center justify-center">
-            <span className="text-gray-400 font-serif">Editorial Hero Placehoder</span>
-          </div>
+          <img src="/resourses/photo-1524592094714-0f0654e20314.jpg" alt={dict.story.title} className="w-full h-full object-cover" />
         </div>
 
         {/* Content Flow */}

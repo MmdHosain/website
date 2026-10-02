@@ -1,51 +1,35 @@
-const getBaseUrl = () => {
-  if (typeof window === 'undefined') {
-    return process.env.INTERNAL_API_URL || 'http://backend:4000';
-  }
-  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
-};
-
+import { apiRequest, ApiError } from './api';
+export interface AuthUser { id: string; mobile: string; role: 'user' | 'admin' | 'staff_orders' | 'staff_catalog' | 'staff_blog'; }
+const notify = () => window.dispatchEvent(new Event('ariwatch:auth'));
 export const authService = {
-  async requestOtp(mobile: string) {
-    const res = await fetch(`${getBaseUrl()}/api/auth/request-otp`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ mobile }),
-    });
-    if (!res.ok) throw new Error('Failed to request OTP');
-    return await res.json();
+  requestOtp(mobile: string) {
+    return apiRequest<{ success: boolean; devOtp?: string; mobile?: string }>('/api/auth/request-otp', { method: 'POST', body: { mobile } });
   },
-
   async verifyOtp(mobile: string, code: string) {
-    const res = await fetch(`${getBaseUrl()}/api/auth/verify-otp`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ mobile, code }),
-    });
-    
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Failed to verify OTP');
-    
-    // Save token to localStorage for persistent session
-    if (typeof window !== 'undefined' && data.token) {
-      localStorage.setItem('ariwatch_token', data.token);
-      localStorage.setItem('ariwatch_user', JSON.stringify(data.user));
-    }
-    
+    const data = await apiRequest<{ user: AuthUser; token: string }>('/api/auth/verify-otp', { method: 'POST', body: { mobile, code } });
+    localStorage.setItem('ariwatch_token', data.token);
+    localStorage.setItem('ariwatch_user', JSON.stringify(data.user));
+    notify();
     return data;
   },
-
-  logout() {
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('ariwatch_token');
-      localStorage.removeItem('ariwatch_user');
-    }
+  getToken() { return typeof window === 'undefined' ? null : localStorage.getItem('ariwatch_token'); },
+  getUser(): AuthUser | null {
+    if (typeof window === 'undefined') return null;
+    try { return JSON.parse(localStorage.getItem('ariwatch_user') || 'null'); } catch { return null; }
   },
-
-  isAuthenticated() {
-    if (typeof window !== 'undefined') {
-      return !!localStorage.getItem('ariwatch_token');
-    }
-    return false;
-  }
+  async me(): Promise<AuthUser> {
+    const token = authService.getToken();
+    const data = await apiRequest<{ user: AuthUser }>('/api/auth/me', { authenticated: true });
+    if (authService.getToken() !== token) throw new ApiError('Your session changed. Please try again.', 409);
+    localStorage.setItem('ariwatch_user', JSON.stringify(data.user));
+    return data.user;
+  },
+  async logout() {
+    const token = authService.getToken();
+    localStorage.removeItem('ariwatch_token');
+    localStorage.removeItem('ariwatch_user');
+    notify();
+    if (token) await apiRequest('/api/auth/logout', { method: 'POST', headers: { Authorization: `Bearer ${token}` } }).catch(() => {});
+  },
+  isAuthenticated() { return !!authService.getToken(); },
 };

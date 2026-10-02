@@ -1,7 +1,9 @@
 import { getDictionary } from "../../dictionaries";
 import { ConciergeForm } from "../../../components/concierge/ConciergeForm";
 
-export default async function ConciergePage({ params: { lang } }: { params: { lang: 'en' | 'fa' } }) {
+export default async function ConciergePage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang: requestedLang } = await params;
+  const lang = requestedLang === "en" ? "en" : "fa";
   const dict = await getDictionary(lang);
   const isFa = lang === 'fa';
   

@@ -1,0 +1,72 @@
+-- Mirror only known, unchanged demo images. Other catalog and customer fields stay intact.
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM schema_migrations WHERE name='local_demo_images_v1') THEN
+    WITH images(name,original_url,local_url) AS (VALUES
+      ('Patek Philippe Nautilus 5711','https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-3.jpg'),
+      ('Audemars Piguet Royal Oak','https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80&w=800','/resourses/photo-1523170335258-f5ed11844a49.jpg'),
+      ('Rolex Daytona Cosmograph','https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&q=80&w=800','/resourses/photo-1547996160-81dfa63595aa.jpg'),
+      ('Cartier Santos de Cartier','https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&q=80&w=800','/resourses/photo-1614164185128-e4ec99c436d7.jpg'),
+      ('A. Lange & Söhne Lange 1','https://images.unsplash.com/photo-1508656937041-edbe9e178f8f?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-1.jpg'),
+      ('Rolex Submariner Date','https://images.unsplash.com/photo-1585123334904-845d60e97b29?auto=format&fit=crop&q=80&w=800','/resourses/photo-1585123334904-845d60e97b29.jpg'),
+      ('Omega Speedmaster Moonwatch','https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&q=80&w=800','/resourses/photo-1522312346375-d1a52e2b99b3.jpg'),
+      ('Rolex Datejust 36','https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&q=80&w=800','/resourses/photo-1612817159949-195b6eb9e31a.jpg'),
+      ('Cartier Tank Must','https://images.unsplash.com/photo-1587836374828-cb4387df3eb7?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-2.jpg'),
+      ('Patek Philippe Aquanaut 5167A','https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80&w=800','/resourses/photo-1524592094714-0f0654e20314.jpg'),
+      ('Rolex GMT-Master II','https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-3.jpg'),
+      ('Audemars Piguet Royal Oak Offshore','https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80&w=800','/resourses/photo-1523170335258-f5ed11844a49.jpg'),
+      ('Omega Seamaster Diver 300M','https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&q=80&w=800','/resourses/photo-1547996160-81dfa63595aa.jpg'),
+      ('Cartier Ballon Bleu','https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&q=80&w=800','/resourses/photo-1614164185128-e4ec99c436d7.jpg'),
+      ('IWC Portugieser Chronograph','https://images.unsplash.com/photo-1508656937041-edbe9e178f8f?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-1.jpg'),
+      ('Tudor Black Bay Fifty-Eight','https://images.unsplash.com/photo-1585123334904-845d60e97b29?auto=format&fit=crop&q=80&w=800','/resourses/photo-1585123334904-845d60e97b29.jpg'),
+      ('Panerai Luminor Marina','https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&q=80&w=800','/resourses/photo-1522312346375-d1a52e2b99b3.jpg'),
+      ('Vacheron Constantin Overseas','https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&q=80&w=800','/resourses/photo-1612817159949-195b6eb9e31a.jpg'),
+      ('Jaeger-LeCoultre Reverso','https://images.unsplash.com/photo-1587836374828-cb4387df3eb7?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-2.jpg'),
+      ('Breitling Navitimer','https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80&w=800','/resourses/photo-1524592094714-0f0654e20314.jpg'),
+      ('TAG Heuer Monaco','https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-3.jpg'),
+      ('Hublot Big Bang','https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80&w=800','/resourses/photo-1523170335258-f5ed11844a49.jpg'),
+      ('Zenith El Primero','https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&q=80&w=800','/resourses/photo-1547996160-81dfa63595aa.jpg'),
+      ('Blancpain Fifty Fathoms','https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&q=80&w=800','/resourses/photo-1614164185128-e4ec99c436d7.jpg'),
+      ('Rolex GMT-Master II Batman','https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-3.jpg'),
+      ('Rolex Day-Date 40','https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80&w=800','/resourses/photo-1523170335258-f5ed11844a49.jpg'),
+      ('Rolex Yacht-Master 42','https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&q=80&w=800','/resourses/photo-1547996160-81dfa63595aa.jpg'),
+      ('Rolex Explorer II','https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&q=80&w=800','/resourses/photo-1614164185128-e4ec99c436d7.jpg'),
+      ('Rolex Milgauss','https://images.unsplash.com/photo-1508656937041-edbe9e178f8f?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-1.jpg'),
+      ('Rolex Sky-Dweller','https://images.unsplash.com/photo-1585123334904-845d60e97b29?auto=format&fit=crop&q=80&w=800','/resourses/photo-1585123334904-845d60e97b29.jpg'),
+      ('Patek Philippe Calatrava','https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&q=80&w=800','/resourses/photo-1522312346375-d1a52e2b99b3.jpg'),
+      ('Patek Philippe Grand Complications','https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&q=80&w=800','/resourses/photo-1612817159949-195b6eb9e31a.jpg'),
+      ('Audemars Piguet Royal Oak Concept','https://images.unsplash.com/photo-1587836374828-cb4387df3eb7?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-2.jpg'),
+      ('Audemars Piguet Millenary','https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80&w=800','/resourses/photo-1524592094714-0f0654e20314.jpg'),
+      ('Richard Mille RM 11-03','https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-3.jpg'),
+      ('Richard Mille RM 67-02','https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80&w=800','/resourses/photo-1523170335258-f5ed11844a49.jpg'),
+      ('Richard Mille RM 055','https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&q=80&w=800','/resourses/photo-1547996160-81dfa63595aa.jpg'),
+      ('Omega Seamaster Aqua Terra','https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&q=80&w=800','/resourses/photo-1614164185128-e4ec99c436d7.jpg'),
+      ('Omega Speedmaster Dark Side','https://images.unsplash.com/photo-1508656937041-edbe9e178f8f?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-1.jpg'),
+      ('Omega Constellation','https://images.unsplash.com/photo-1585123334904-845d60e97b29?auto=format&fit=crop&q=80&w=800','/resourses/photo-1585123334904-845d60e97b29.jpg'),
+      ('Cartier Panthère de Cartier','https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&q=80&w=800','/resourses/photo-1522312346375-d1a52e2b99b3.jpg'),
+      ('Cartier Pasha de Cartier','https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&q=80&w=800','/resourses/photo-1612817159949-195b6eb9e31a.jpg'),
+      ('Cartier Crash','https://images.unsplash.com/photo-1587836374828-cb4387df3eb7?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-2.jpg'),
+      ('Tudor Pelagos','https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80&w=800','/resourses/photo-1524592094714-0f0654e20314.jpg'),
+      ('Tudor Black Bay GMT','https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-3.jpg'),
+      ('IWC Big Pilot','https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80&w=800','/resourses/photo-1523170335258-f5ed11844a49.jpg'),
+      ('IWC Portofino','https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&q=80&w=800','/resourses/photo-1547996160-81dfa63595aa.jpg'),
+      ('Breitling Superocean','https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&q=80&w=800','/resourses/photo-1614164185128-e4ec99c436d7.jpg'),
+      ('Breitling Chronomat','https://images.unsplash.com/photo-1508656937041-edbe9e178f8f?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-1.jpg'),
+      ('Jaeger-LeCoultre Master Ultra Thin','https://images.unsplash.com/photo-1585123334904-845d60e97b29?auto=format&fit=crop&q=80&w=800','/resourses/photo-1585123334904-845d60e97b29.jpg'),
+      ('Jaeger-LeCoultre Polaris','https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&q=80&w=800','/resourses/photo-1522312346375-d1a52e2b99b3.jpg'),
+      ('Grand Seiko Snowflake','https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&q=80&w=800','/resourses/photo-1612817159949-195b6eb9e31a.jpg'),
+      ('Grand Seiko White Birch','https://images.unsplash.com/photo-1587836374828-cb4387df3eb7?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-2.jpg'),
+      ('Hublot Classic Fusion','https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80&w=800','/resourses/photo-1524592094714-0f0654e20314.jpg'),
+      ('Hublot Spirit of Big Bang','https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-3.jpg'),
+      ('Vacheron Constantin Patrimony','https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80&w=800','/resourses/photo-1523170335258-f5ed11844a49.jpg'),
+      ('Vacheron Constantin Historiques','https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&q=80&w=800','/resourses/photo-1547996160-81dfa63595aa.jpg'),
+      ('A. Lange & Söhne Zeitwerk','https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&q=80&w=800','/resourses/photo-1614164185128-e4ec99c436d7.jpg'),
+      ('A. Lange & Söhne Saxonia','https://images.unsplash.com/photo-1508656937041-edbe9e178f8f?auto=format&fit=crop&q=80&w=800','/resourses/lifestyle-watch-1.jpg'),
+      ('Ulysse Nardin Freak','https://images.unsplash.com/photo-1585123334904-845d60e97b29?auto=format&fit=crop&q=80&w=800','/resourses/photo-1585123334904-845d60e97b29.jpg')
+    )
+    UPDATE watches SET image_url=images.local_url FROM images
+      WHERE watches.name=images.name AND watches.image_url=images.original_url;
+    INSERT INTO schema_migrations(name) VALUES('local_demo_images_v1');
+  END IF;
+END
+$$;

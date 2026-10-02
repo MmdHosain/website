@@ -29,7 +29,7 @@ export function BrandStoryTeaser({ lang, dict }: { lang: string, dict: any, isFa
             className="flex flex-col group cursor-pointer active:scale-[0.98] transition-transform duration-200"
           >
             <div className="w-full aspect-[4/5] bg-gray-100 mb-6 border border-gray-200/60 overflow-hidden flex items-center justify-center">
-              <span className="text-gray-400 text-sm font-serif">{dict.storyTeaser[`card${num}Tag`]} Image</span>
+              <img src={`/resourses/${['photo-1524592094714-0f0654e20314', 'photo-1523170335258-f5ed11844a49', 'photo-1547996160-81dfa63595aa', 'photo-1614164185128-e4ec99c436d7'][num - 1]}.jpg`} alt="" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
             <span className="text-[10px] font-bold tracking-widest text-ariwatch-red uppercase mb-3">
               {dict.storyTeaser[`card${num}Tag`]}

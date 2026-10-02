@@ -35,12 +35,7 @@ export function EditorialCollage({ activeImages, brand, currentSlide }: { active
       {/* Bottom Right (Video style) */}
       <div className="absolute bottom-[-5%] right-[5%] w-[50%] aspect-video bg-white border-4 md:border-8 border-white shadow-2xl z-40 animate-fade-in-up group cursor-pointer" style={{ animationDelay: '400ms' }}>
         <div className="w-full h-full overflow-hidden relative">
-          <img src={activeImages[1]} alt="Video Thumbnail" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-          {/* Pause icon overlay */}
-          <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 flex gap-1 z-10">
-            <div className="w-1 h-3 md:h-4 bg-white shadow-sm"></div>
-            <div className="w-1 h-3 md:h-4 bg-white shadow-sm"></div>
-          </div>
+          <img src={activeImages[1]} alt={brand} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-50"></div>
         </div>
       </div>

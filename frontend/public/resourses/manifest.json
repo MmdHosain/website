@@ -1,0 +1,222 @@
+{
+  "downloadedAt": "2026-10-02T14:23:52.899Z",
+  "assets": [
+    {
+      "filename": "hero-royal-oak.avif",
+      "localUrl": "/resourses/hero-royal-oak.avif",
+      "model": "Royal Oak Selfwinding Chronograph",
+      "reference": "26240ST.OO.1320ST.07",
+      "sourcePage": "https://www.audemarspiguet.com/us/en/watch-collection/royal-oak/26240ST.OO.1320ST.07",
+      "sourceUrl": "https://dynamicmedia.audemarspiguet.com/is/image/audemarspiguet/watch-1070?dpr=off&fmt=avif-alpha&size=1000%2C0",
+      "bytes": 120867,
+      "sha256": "2a30a9436d296cf48171ce94b3e84f176df6a81c50295ec788d5f52e18fdd3f9",
+      "kind": "hero"
+    },
+    {
+      "filename": "hero-daytona.webp",
+      "localUrl": "/resourses/hero-daytona.webp",
+      "model": "Cosmograph Daytona",
+      "reference": "126500LN",
+      "sourcePage": "https://www.rolex.com/en-us/watches/cosmograph-daytona/m126500ln-0001",
+      "sourceUrl": "https://media.rolex.com/image/upload/q_auto/f_webp/c_limit,w_1400/v1/a677b2c664f6/catalogue/2026/upright-c/m126500ln-0001",
+      "bytes": 97080,
+      "sha256": "c8edad4cb3783f4510f85d4c3fee6d6ba2a3efabf6a975b1fc36d6e350cd7151",
+      "kind": "hero"
+    },
+    {
+      "filename": "hero-lange-1.jpg",
+      "localUrl": "/resourses/hero-lange-1.jpg",
+      "model": "Lange 1",
+      "reference": "191.032",
+      "sourcePage": "https://www.alange-soehne.com/tw-en/timepieces/lange-1/lange-1/lange-1-in-750-pink-gold-191-032",
+      "sourceUrl": "https://img.alange-soehne.com/product-slideshow-product-2/c3864cd295bb2700980c93b90dbb31066b875457.jpg",
+      "bytes": 61026,
+      "sha256": "d7ad143ecb332b1a89962351ce8eff08280a906ec6c8f82cdcb0a563f865866e",
+      "kind": "hero"
+    },
+    {
+      "filename": "hero-nautilus.png",
+      "localUrl": "/resourses/hero-nautilus.png",
+      "brand": "Patek Philippe",
+      "model": "Nautilus",
+      "reference": "5811/1G-001",
+      "sourcePage": "https://www.patek.com/en/collection/nautilus/5811-1G-001",
+      "sourceUrl": "https://patek-res.cloudinary.com/dfsmedia/0906caea301d42b3b8bd23bd656d1711/4827-51889",
+      "bytes": 1104294,
+      "sha256": "8a80ab8817fb89b6d8d53d9786f69ef7a34cfc60b267164d0230ff144190bd32",
+      "width": 1920,
+      "height": 2691,
+      "kind": "hero"
+    },
+    {
+      "filename": "hero-santos.png",
+      "localUrl": "/resourses/hero-santos.png",
+      "brand": "Cartier",
+      "model": "Santos de Cartier",
+      "reference": "WSSA0018",
+      "sourcePage": "https://www.cartier.com.br/wssa0018-relogio-santos-de-cartier/p",
+      "sourceUrl": "https://cartier.vtexassets.com/arquivos/ids/199000/WSSA0018_1.png?v=637207524754600000",
+      "bytes": 258981,
+      "sha256": "2eb4a89fb37db74da7314cf30d401e01c9488861c72f1f3ea63004429b0d536d",
+      "width": 1000,
+      "height": 1000,
+      "kind": "hero"
+    },
+    {
+      "filename": "photo-1522312346375-d1a52e2b99b3.jpg",
+      "localUrl": "/resourses/photo-1522312346375-d1a52e2b99b3.jpg",
+      "sourceUrl": "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?fm=jpg&fit=max&q=85&w=1600",
+      "bytes": 592890,
+      "sha256": "36627b95ad5dd7c6a0484ef780050730c836b3f13703d309342747cb24b58add",
+      "kind": "editorial",
+      "originalPhotoId": "photo-1522312346375-d1a52e2b99b3",
+      "references": [
+        "frontend/components/home/editorial/editorial.data.ts",
+        "frontend/components/home/HighCopyShowcase.tsx",
+        "backend/src/infrastructure/database/init.sql"
+      ]
+    },
+    {
+      "filename": "photo-1523170335258-f5ed11844a49.jpg",
+      "localUrl": "/resourses/photo-1523170335258-f5ed11844a49.jpg",
+      "sourceUrl": "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?fm=jpg&fit=max&q=85&w=1600",
+      "bytes": 253760,
+      "sha256": "2b98fcb02eec86250cc6009bc0e4294308ed0fdde9abf40e60a38752e4027e9b",
+      "kind": "editorial",
+      "originalPhotoId": "photo-1523170335258-f5ed11844a49",
+      "references": [
+        "frontend/components/home/BrandStoryTeaser.tsx",
+        "frontend/components/home/CategorisedLookbook.tsx",
+        "frontend/components/home/editorial/editorial.data.ts",
+        "backend/src/infrastructure/database/init.sql"
+      ]
+    },
+    {
+      "filename": "photo-1524592094714-0f0654e20314.jpg",
+      "localUrl": "/resourses/photo-1524592094714-0f0654e20314.jpg",
+      "sourceUrl": "https://images.unsplash.com/photo-1524592094714-0f0654e20314?fm=jpg&fit=max&q=85&w=1600",
+      "bytes": 217905,
+      "sha256": "8c2b53ac6db88865da600e8b7baa99a1e113416f3d5df6c936baed43ae6a2883",
+      "kind": "editorial",
+      "originalPhotoId": "photo-1524592094714-0f0654e20314",
+      "references": [
+        "frontend/app/[lang]/story/arash-khandan/page.tsx",
+        "frontend/app/[lang]/story/behind-the-scenes/page.tsx",
+        "frontend/app/[lang]/story/company/page.tsx",
+        "frontend/app/[lang]/story/melina/page.tsx",
+        "frontend/app/[lang]/story/page.tsx",
+        "frontend/components/home/BrandStoryTeaser.tsx",
+        "frontend/components/home/CategorisedLookbook.tsx",
+        "frontend/components/home/editorial/editorial.data.ts",
+        "backend/src/infrastructure/database/init.sql"
+      ]
+    },
+    {
+      "filename": "photo-1547996160-81dfa63595aa.jpg",
+      "localUrl": "/resourses/photo-1547996160-81dfa63595aa.jpg",
+      "sourceUrl": "https://images.unsplash.com/photo-1547996160-81dfa63595aa?fm=jpg&fit=max&q=85&w=1600",
+      "bytes": 239657,
+      "sha256": "7b630847de738085d8d556b801ebfee5ff9e5f122420453c504ca8894f6e787a",
+      "kind": "editorial",
+      "originalPhotoId": "photo-1547996160-81dfa63595aa",
+      "references": [
+        "frontend/components/home/BrandStoryTeaser.tsx",
+        "frontend/components/home/CategorySpotlight.tsx",
+        "frontend/components/home/editorial/editorial.data.ts",
+        "backend/src/infrastructure/database/init.sql"
+      ]
+    },
+    {
+      "filename": "photo-1585123334904-845d60e97b29.jpg",
+      "localUrl": "/resourses/photo-1585123334904-845d60e97b29.jpg",
+      "sourceUrl": "https://images.unsplash.com/photo-1585123334904-845d60e97b29?fm=jpg&fit=max&q=85&w=1600",
+      "bytes": 317968,
+      "sha256": "e511bee10b998a56b6f88f7c08f3412dd9de710c31d34fb3f25540b2674c7ead",
+      "kind": "editorial",
+      "originalPhotoId": "photo-1585123334904-845d60e97b29",
+      "references": [
+        "frontend/components/home/editorial/editorial.data.ts",
+        "backend/src/infrastructure/database/init.sql"
+      ]
+    },
+    {
+      "filename": "photo-1612817159949-195b6eb9e31a.jpg",
+      "localUrl": "/resourses/photo-1612817159949-195b6eb9e31a.jpg",
+      "sourceUrl": "https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?fm=jpg&fit=max&q=85&w=1600",
+      "bytes": 128657,
+      "sha256": "d7581314889ae222c3e87279e53083bc95efbefda71b7c71d42c0db7f44306ae",
+      "kind": "editorial",
+      "originalPhotoId": "photo-1612817159949-195b6eb9e31a",
+      "references": [
+        "frontend/components/home/editorial/editorial.data.ts",
+        "backend/src/infrastructure/database/init.sql"
+      ]
+    },
+    {
+      "filename": "photo-1614164185128-e4ec99c436d7.jpg",
+      "localUrl": "/resourses/photo-1614164185128-e4ec99c436d7.jpg",
+      "sourceUrl": "https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?fm=jpg&fit=max&q=85&w=1600",
+      "bytes": 300637,
+      "sha256": "11936cd81388b0c6e0acd8956f3791b8af8ab8dfc72f5328445269e6d3f73d7b",
+      "kind": "editorial",
+      "originalPhotoId": "photo-1614164185128-e4ec99c436d7",
+      "references": [
+        "frontend/components/home/BrandStoryTeaser.tsx",
+        "frontend/components/home/editorial/editorial.data.ts",
+        "frontend/components/home/HighCopyShowcase.tsx",
+        "backend/src/infrastructure/database/init.sql"
+      ]
+    },
+    {
+      "filename": "lifestyle-watch-1.jpg",
+      "localUrl": "/resourses/lifestyle-watch-1.jpg",
+      "sourceUrl": "https://images.unsplash.com/photo-1436076838903-fd4dd41d99c4?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzkwODMwMzc0fA&ixlib=rb-4.1.0",
+      "sourcePage": "https://unsplash.com/photos/persons-hand-holding-round-silver-analog-watch-with-black-leather-strap-tB4-ftQ4zyI",
+      "photographer": "Wil Stewart",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "bytes": 1097220,
+      "sha256": "44ef0a5954dee6f45a94ab5f9262a432b4f12ba58a82ed5fc09904edd6ef2401",
+      "width": 5845,
+      "height": 3897,
+      "kind": "editorial",
+      "replacesOriginalPhotoId": "photo-1508656937041-edbe9e178f8f"
+    },
+    {
+      "filename": "lifestyle-watch-2.jpg",
+      "localUrl": "/resourses/lifestyle-watch-2.jpg",
+      "sourceUrl": "https://images.unsplash.com/photo-1616640044918-0622649122f0?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzkwODAwMTAxfA&ixlib=rb-4.1.0",
+      "sourcePage": "https://unsplash.com/photos/black-and-silver-round-analog-watch-with-black-leather-strap-sLrHSG1drkA",
+      "photographer": "Brandon Romanchuk",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "bytes": 779784,
+      "sha256": "e30a9542b0d4dfe5f1ba64ea5d0a02ad4060d97bb46efc91db8d326142460fb7",
+      "width": 5184,
+      "height": 3456,
+      "kind": "editorial",
+      "replacesOriginalPhotoId": "photo-1587836374828-cb4387df3eb7"
+    },
+    {
+      "filename": "lifestyle-watch-3.jpg",
+      "localUrl": "/resourses/lifestyle-watch-3.jpg",
+      "sourceUrl": "https://images.unsplash.com/photo-1507975456351-a41d6828b9c8?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzkwNTI3NTc0fA&ixlib=rb-4.1.0",
+      "sourcePage": "https://unsplash.com/photos/round-silver-colored-chronograph-watch-with-black-leather-strap-KXfdsHLl3oQ",
+      "photographer": "Johannes Weißmüller",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "bytes": 1544054,
+      "sha256": "7b0b3547d561cb0ee0b9accdc2aa637b0620d897c7a4c68402cef40422f48a1f",
+      "width": 6000,
+      "height": 4000,
+      "kind": "editorial",
+      "replacesOriginalPhotoId": "photo-1548036328-c9fa89d128fa"
+    }
+  ],
+  "videos": [],
+  "notes": [
+    "The current site contains no video sources; the editorial video-style tile is a still image.",
+    "Two original demo URLs returned HTTP 404 and one depicted a handbag; all three are replaced with verified wristwatch photos.",
+    "Hero product photos are unmodified official brand packshots. Catalog seed products remain demo inventory; hero imagery does not establish stock availability."
+  ]
+}

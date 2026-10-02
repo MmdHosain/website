@@ -1,63 +1,19 @@
 import { Watch } from '../types';
-
-// Helper to use absolute URLs on the server, and relative or NEXT_PUBLIC on client
-const getBaseUrl = () => {
-  if (typeof window === 'undefined') {
-    // Server-side context inside Docker network
-    return process.env.INTERNAL_API_URL || 'http://backend:4000';
-  }
-  // Client-side browser context
-  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
-};
-
+import { apiRequest, ApiError } from './api';
 export const watchService = {
-  async getAll(): Promise<Watch[]> {
-    try {
-      const res = await fetch(`${getBaseUrl()}/api/watches`, { cache: 'no-store' });
-      if (!res.ok) return [];
-      return await res.json();
-    } catch (error) {
-      console.error("Failed to fetch watches:", error);
-      return [];
-    }
-  },
-  
+  getAll(): Promise<Watch[]> { return apiRequest('/api/watches'); },
   async getById(id: string): Promise<Watch | null> {
-    try {
-      const res = await fetch(`${getBaseUrl()}/api/watches/${id}`, { cache: 'no-store' });
-      if (!res.ok) return null;
-      return await res.json();
-    } catch (error) {
-      console.error(`Failed to fetch watch ${id}:`, error);
-      return null;
-    }
+    try { return await apiRequest(`/api/watches/${encodeURIComponent(id)}`); }
+    catch (error) { if (error instanceof ApiError && (error.status === 404 || error.status === 400)) return null; throw error; }
   },
-
-  async create(data: Omit<Watch, 'id'>): Promise<Watch> {
-    const res = await fetch(`${getBaseUrl()}/api/watches`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    if (!res.ok) throw new Error('Failed to create watch');
-    return await res.json();
+  create(data: Omit<Watch, 'id'>): Promise<Watch> {
+    return apiRequest('/api/watches', { method: 'POST', body: data, authenticated: true });
   },
-
-  async update(id: string, data: Partial<Watch>): Promise<Watch> {
-    const res = await fetch(`${getBaseUrl()}/api/watches/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    if (!res.ok) throw new Error('Failed to update watch');
-    return await res.json();
+  update(id: string, data: Partial<Watch>): Promise<Watch> {
+    return apiRequest(`/api/watches/${encodeURIComponent(id)}`, { method: 'PUT', body: data, authenticated: true });
   },
-
   async delete(id: string): Promise<boolean> {
-    const res = await fetch(`${getBaseUrl()}/api/watches/${id}`, {
-      method: 'DELETE',
-    });
-    if (!res.ok) throw new Error('Failed to delete watch');
+    await apiRequest(`/api/watches/${encodeURIComponent(id)}`, { method: 'DELETE', authenticated: true });
     return true;
-  }
+  },
 };

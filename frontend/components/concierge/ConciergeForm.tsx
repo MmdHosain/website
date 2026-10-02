@@ -1,75 +1,36 @@
 "use client";
-
 import { useState } from "react";
-
-export function ConciergeForm({ lang, dict, isFa }: { lang: string, dict: any, isFa: boolean }) {
+import { apiRequest } from "../../services/api";
+export function ConciergeForm({ lang, dict, isFa }: { lang: string; dict: any; isFa: boolean }) {
   const [submitted, setSubmitted] = useState(false);
-
-  if (submitted) {
-    return (
-      <div className="flex flex-col items-center justify-center py-20 text-center animate-fade-in-up">
-        <div className="w-16 h-16 rounded-full bg-green-50 text-green-600 flex items-center justify-center mb-6">
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h3 className="text-2xl font-serif text-ariwatch-black mb-4 uppercase tracking-widest">
-          {dict.concierge.successTitle}
-        </h3>
-        <p className="text-ariwatch-gray">
-          {dict.concierge.successDesc}
-        </p>
-      </div>
-    );
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [reference, setReference] = useState('');
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault(); setLoading(true); setError('');
+    const data = new FormData(event.currentTarget);
+    try {
+      const result = await apiRequest<{ id?: string; request?: { id: string } }>('/api/concierge', { method: 'POST', body: { name: data.get('name'), email: data.get('email'), model: data.get('model'), message: data.get('message'), lang } });
+      setReference(result.id || result.request?.id || ''); setSubmitted(true);
+    } catch (err) { setError(err instanceof Error ? err.message : (isFa ? 'ارسال انجام نشد. دوباره تلاش کنید.' : 'Could not submit. Please try again.')); }
+    finally { setLoading(false); }
   }
-
-  return (
-    <form className="flex flex-col gap-8" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="flex flex-col gap-2">
-          <label className="text-[10px] font-bold tracking-widest text-ariwatch-black uppercase">
-            {dict.concierge.formName}
-          </label>
-          <input 
-            required
-            type="text" 
-            className="border-b border-gray-300 py-3 bg-transparent focus:outline-none focus:border-ariwatch-red transition-colors text-sm"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="text-[10px] font-bold tracking-widest text-ariwatch-black uppercase">
-            {dict.concierge.formEmail}
-          </label>
-          <input 
-            required
-            type="email" 
-            className="border-b border-gray-300 py-3 bg-transparent focus:outline-none focus:border-ariwatch-red transition-colors text-sm"
-          />
-        </div>
-      </div>
-      <div className="flex flex-col gap-2">
-        <label className="text-[10px] font-bold tracking-widest text-ariwatch-black uppercase">
-          {dict.concierge.formModel}
-        </label>
-        <input 
-          required
-          type="text" 
-          className="border-b border-gray-300 py-3 bg-transparent focus:outline-none focus:border-ariwatch-red transition-colors text-sm"
-        />
-      </div>
-      <div className="flex flex-col gap-2">
-        <label className="text-[10px] font-bold tracking-widest text-ariwatch-black uppercase">
-          {dict.concierge.formMessage}
-        </label>
-        <textarea 
-          required
-          rows={4} 
-          className="border-b border-gray-300 py-3 bg-transparent focus:outline-none focus:border-ariwatch-red transition-colors resize-none text-sm"
-        ></textarea>
-      </div>
-      <button type="submit" className="mt-4 bg-ariwatch-black text-white px-10 py-4 text-[10px] md:text-xs font-bold tracking-widest uppercase hover:bg-black transition-colors w-full md:w-fit md:self-end">
-        {dict.concierge.submit}
-      </button>
-    </form>
-  );
+  if (submitted) return <div role="status" className="py-16 text-center">
+    <div className="text-green-700 text-4xl mb-6">✓</div>
+    <h3 className="text-2xl font-serif mb-4">{dict.concierge.successTitle}</h3>
+    <p className="text-gray-500">{dict.concierge.successDesc}</p>
+    {reference && <p className="mt-5 text-xs text-gray-500">{isFa ? 'شماره درخواست:' : 'Request reference:'} <span dir="ltr">{reference.slice(0, 8).toUpperCase()}</span></p>}
+    <button className="mt-8 underline text-sm" onClick={() => setSubmitted(false)}>{isFa ? 'درخواست جدید' : 'Send another request'}</button>
+  </div>;
+  const inputClass = "border-b border-gray-300 py-3 bg-transparent focus:border-ariwatch-red outline-none text-sm";
+  return <form onSubmit={submit} className="flex flex-col gap-8">
+    {error && <p role="alert" className="p-3 bg-red-50 text-red-700 text-sm">{error}</p>}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <label className="flex flex-col gap-2 text-xs font-bold">{dict.concierge.formName}<input name="name" required minLength={2} maxLength={100} autoComplete="name" className={inputClass} /></label>
+      <label className="flex flex-col gap-2 text-xs font-bold">{dict.concierge.formEmail}<input name="email" required type="email" maxLength={254} autoComplete="email" dir="ltr" className={inputClass} /></label>
+    </div>
+    <label className="flex flex-col gap-2 text-xs font-bold">{dict.concierge.formModel}<input name="model" required minLength={2} maxLength={200} className={inputClass} /></label>
+    <label className="flex flex-col gap-2 text-xs font-bold">{dict.concierge.formMessage}<textarea name="message" required minLength={10} maxLength={2000} rows={4} className={inputClass} /></label>
+    <button disabled={loading} className="bg-ariwatch-black text-white px-10 py-4 text-xs font-bold w-full md:w-fit md:self-end disabled:opacity-50">{loading ? (isFa ? 'در حال ارسال…' : 'Submitting…') : dict.concierge.submit}</button>
+  </form>;
 }

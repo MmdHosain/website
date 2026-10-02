@@ -1,69 +1,32 @@
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { watchService } from "../services/watch.service";
-import { Watch } from "../types";
-
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { watchService } from '../services/watch.service';
+import { Watch } from '../types';
+import { watchDraft, watchPayload, VariantDraft } from '../components/admin/watchFormModel';
 export function useWatchForm(lang: string, initialData?: Watch | null) {
-  const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  const [formData, setFormData] = useState({
-    name: initialData?.name || "",
-    description: initialData?.description || "",
-    price: initialData?.price || "",
-    category: initialData?.category || "original",
-    imageUrl: initialData?.imageUrl || "placeholder",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  const router = useRouter(), isFa = lang === 'fa';
+  const [loading, setLoading] = useState(false), [error, setError] = useState('');
+  const [formData, setFormData] = useState(() => watchDraft(initialData));
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData(previous => ({ ...previous, [event.target.name]: event.target.value })); setError('');
   };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-
+  const setVariants = (variants: VariantDraft[]) => setFormData(previous => ({ ...previous, variants }));
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault(); setError('');
     try {
-      const payload = {
-        ...formData,
-        price: Number(formData.price)
-      };
-
-      if (initialData?.id) {
-        await watchService.update(initialData.id, payload);
-      } else {
-        await watchService.create(payload as Omit<Watch, 'id'>);
-      }
-      router.push(`/${lang}/admin`);
-      router.refresh();
-    } catch (err: any) {
-      setError(err.message || "An error occurred");
-    } finally {
-      setLoading(false);
-    }
+      const payload = watchPayload(formData); setLoading(true);
+      if (initialData?.id) await watchService.update(initialData.id, payload);
+      else await watchService.create(payload);
+      router.push(`/${lang}/admin`); router.refresh();
+    } catch (cause) { setError(cause instanceof Error ? cause.message : (isFa ? 'ذخیره محصول انجام نشد.' : 'Could not save the product.')); }
+    finally { setLoading(false); }
   };
-
   const handleDelete = async () => {
-    if (!initialData?.id || !confirm("Are you sure you want to delete this watch?")) return;
-    setLoading(true);
-    try {
-      await watchService.delete(initialData.id);
-      router.push(`/${lang}/admin`);
-      router.refresh();
-    } catch (err: any) {
-      setError(err.message || "Failed to delete");
-      setLoading(false);
-    }
+    if (!initialData?.id || !window.confirm(isFa ? 'این ساعت از فروشگاه حذف شود؟' : 'Delete this watch from the catalog?')) return;
+    setLoading(true); setError('');
+    try { await watchService.delete(initialData.id); router.push(`/${lang}/admin`); router.refresh(); }
+    catch (cause) { setError(cause instanceof Error ? cause.message : (isFa ? 'حذف محصول انجام نشد.' : 'Could not delete the product.')); }
+    finally { setLoading(false); }
   };
-
-  return {
-    formData,
-    loading,
-    error,
-    handleChange,
-    handleSubmit,
-    handleDelete,
-  };
+  return { formData, loading, error, handleChange, handleSubmit, handleDelete, setVariants };
 }

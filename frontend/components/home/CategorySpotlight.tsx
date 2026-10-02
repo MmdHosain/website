@@ -5,14 +5,12 @@ export function CategorySpotlight({ lang, dict, isFa }: { lang: string, dict: an
     <section className="flex flex-col md:flex-row w-full bg-white">
       {/* Left Column */}
       <div className="w-full md:w-1/2 bg-[#fcfbf9] min-h-[440px] md:min-h-[580px] relative flex items-center justify-center p-8 border-b md:border-b-0 md:border-r border-gray-100">
-        <div className="w-64 h-64 md:w-80 md:h-80 bg-gray-100 aspect-square border border-gray-200/50 shadow-sm flex items-center justify-center text-gray-400">
-          Horizontal Watch
-        </div>
-        <button className={`absolute bottom-6 ${isFa ? 'left-6' : 'right-6'} w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-50 transition-colors z-10`}>
+        <img src="/resourses/photo-1547996160-81dfa63595aa.jpg" alt={dict.categorySpotlight.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+        <Link href={`/${lang}/watches?category=original`} aria-label={dict.categorySpotlight.cta} className={`absolute bottom-6 ${isFa ? 'left-6' : 'right-6'} w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-50 transition-colors z-10`}>
           <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
-        </button>
+        </Link>
       </div>
       {/* Right Column */}
       <div className="w-full md:w-1/2 px-8 md:px-20 py-12 flex flex-col justify-center items-start">

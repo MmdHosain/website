@@ -1,56 +1,30 @@
-import Link from "next/link";
-import { Watch } from "../../types";
+"use client";
+import { localMediaUrl } from '../../services/media';
 
-export function ProductCard({ lang, dict, isFa, watch }: { lang: string, dict: any, isFa: boolean, watch: Watch }) {
-  // Determine category badge text and style
-  const category = watch.category || 'original'; // default fallback
-  const badgeText = 
-    category === 'original' ? dict.plp.filters.original : 
-    category === 'highcopy' ? dict.plp.filters.highCopy : 
-    dict.plp.filters.custom;
-    
-  const badgeClass = 
-    category === 'original' ? 'bg-ariwatch-black text-white' : 
-    category === 'highcopy' ? 'bg-white text-ariwatch-black border border-gray-200' : 
-    'bg-ariwatch-red text-white';
-
-  return (
-    <Link href={`/${lang}/watches/${watch.id}`} className="group block">
-      {/* Image Container */}
-      <div className="relative w-full aspect-[4/5] bg-[#f4f4f4] mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
-        {watch.imageUrl && watch.imageUrl !== 'placeholder' ? (
-          <img src={watch.imageUrl} alt={watch.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-        ) : (
-          <div className="w-3/4 h-3/4 bg-gray-200/50 rounded-full flex items-center justify-center shadow-inner">
-            <span className="text-gray-400 font-serif text-sm">Watch Front</span>
-          </div>
-        )}
-        
-        {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-center justify-center">
-          <span className="translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 bg-white text-ariwatch-black text-[10px] font-bold tracking-widest uppercase px-6 py-3 shadow-lg hover:bg-black hover:text-white">
-            {dict.plp.viewDetails}
-          </span>
-        </div>
-        
-        {/* Badges */}
-        <div className={`absolute top-4 ${isFa ? 'right-4' : 'left-4'} text-[9px] font-bold tracking-widest uppercase px-2 py-1 z-20 shadow-sm ${badgeClass}`}>
-          {badgeText}
-        </div>
+import Link from 'next/link';
+import { Watch } from '../../types';
+import { formatPrice } from '../../services/format';
+import { displayPrice, productStock } from '../../services/catalog/pricing';
+import { useSaleClock } from '../../hooks/useSaleClock';
+import { CollectionActions } from '../collections/CollectionActions';
+export function ProductCard({ lang, dict, isFa, watch }: { lang: string; dict: any; isFa: boolean; watch: Watch }) {
+  const category = watch.category || 'original', pricing = displayPrice(watch, useSaleClock(watch));
+  const badge = category === 'original' ? dict.plp.filters.original : category === 'highcopy' ? dict.plp.filters.highCopy : dict.plp.filters.custom;
+  return <article className="group">
+    <Link href={`/${lang}/watches/${watch.id}`} className="block">
+      <div className="relative w-full aspect-[4/5] bg-[#f4f4f4] mb-5 overflow-hidden flex items-center justify-center border border-gray-100">
+        {watch.imageUrl && watch.imageUrl !== 'placeholder' ? <img src={localMediaUrl(watch.imageUrl)} alt={watch.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" /> : <span className="text-gray-400">{isFa ? 'تصویر ساعت' : 'Watch image'}</span>}
+        <span className="absolute top-4 start-4 text-[9px] font-bold bg-white border border-gray-200 px-2 py-1">{badge}</span>
+        {pricing.onSale && <span className="absolute bottom-4 start-4 bg-ariwatch-red text-white px-3 py-1 text-xs">{isFa ? 'پیشنهاد ویژه' : 'Limited offer'}</span>}
       </div>
-      
-      {/* Info Container */}
-      <div className="flex flex-col items-center text-center px-4">
-        <h3 className="text-lg md:text-xl font-serif text-ariwatch-black uppercase tracking-wider mb-2 group-hover:text-ariwatch-red transition-colors">
-          {watch.name}
-        </h3>
-        <p className="text-xs text-ariwatch-gray mb-3 line-clamp-1">
-          {watch.description}
-        </p>
-        <span className="text-sm font-bold tracking-widest text-ariwatch-black">
-          ${Number(watch.price).toLocaleString()}
-        </span>
+      <div className="text-center px-3">
+        <h3 className="font-serif text-lg md:text-xl mb-2 group-hover:text-ariwatch-red">{watch.name}</h3>
+        <p className="text-xs text-gray-500 mb-3 line-clamp-1">{watch.description}</p>
+        <p className="text-sm font-bold">{!!watch.variants?.length && <span className="font-normal me-1">{isFa ? 'از' : 'From'}</span>}{formatPrice(pricing.price, lang)}</p>
+        {pricing.onSale && <del className="text-xs text-gray-500">{formatPrice(pricing.originalPrice, lang)}</del>}
+        {productStock(watch) < 1 && <p className="mt-2 text-xs text-red-700">{isFa ? 'ناموجود' : 'Out of stock'}</p>}
       </div>
     </Link>
-  );
+    <CollectionActions id={watch.id} lang={lang} />
+  </article>;
 }
